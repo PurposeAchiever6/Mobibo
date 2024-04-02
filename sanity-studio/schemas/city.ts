@@ -1,4 +1,4 @@
-import {defineField, defineType, defineArrayMember} from 'sanity'
+import { defineField, defineType, defineArrayMember } from 'sanity'
 
 export default defineType({
   name: 'item',
@@ -19,7 +19,7 @@ export default defineType({
       name: 'specialties',
       title: 'specialties',
       type: 'array',
-      of: [defineArrayMember({type: 'reference', to: {type: 'specialty'}})],
+      of: [defineArrayMember({ type: 'reference', to: { type: 'specialty' } })],
     }),
     defineField({
       name: 'rate',
