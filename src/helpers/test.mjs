@@ -9,5 +9,5 @@ const query = `*[_type == "blog"]{
   description
 }`;
 sanityClient.fetch(query)
-.then((data) => {console.log(data)})
-.catch((err) => []);
+  .then((data) => { console.log(data) })
+  .catch((err) => []);
