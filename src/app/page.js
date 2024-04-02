@@ -32,11 +32,40 @@ import AdCampain from "@/Components/AdCampain/AdCampain";
 import AllCompainRoutes from "@/Components/AllCompainRoutes/AllCompainRoutes";
 import responsiveTruck from "@/Assests/responsiveTruck.png";
 
+import axios from 'axios';
+import emailjs from '@emailjs/browser';
+import { orderJson } from "./api/utils/json.mjs"
+import dotenv from "dotenv";
+
+dotenv.config()
+
 const page = () => {
   const [selectedRange, setSelectedRange] = useState([new Date(), new Date()]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageList, setImageList] = useState([]);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [company, setCompany] = useState('');
+  const [driverNotes, setDriverNotes] = useState('');
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    var templateParams = await orderJson(firstName, lastName, email, phone, company, driverNotes);
+    axios.post('/api/order', await orderJson(firstName, lastName, email, phone, company, driverNotes));
+    console.log(process.env.NEXT_PUBLIC_SERVICE_ID)
+    emailjs
+      .send(process.env.NEXT_PUBLIC_SERVICE_ID, process.env.NEXT_PUBLIC_TEMPLATE_ID, templateParams, process.env.NEXT_PUBLIC_PUBLIC_KEY)
+      .then(
+        () => {
+          console.log('Email sending SUCCESS!');
+        },
+        (error) => {
+          console.log('Email sending FAILED...', error);
+        },
+      );
+  }
   const companyData = [
     {
       companyName: "company Name1",
@@ -424,30 +453,30 @@ const page = () => {
                     </button>
                   </div>
                   <div className="bg-[#fff] rounded-lg p-4 mt-[10px]">
-        {imageList.length === 0 ? ("Uploaded Images show here!") :(imageList.map((image, index) => (
-          <div key={index} className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f] cursor-pointer" onClick={() => setSelectedImage(image.url)}>
-              {image.name}
-            </div>
-            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">
-              {image.size}
-            </div>
-          </div>
-        )))}
-      </div>
-      <div className="w-[100%] mt-[10px] flex justify-center">
-  <input
-    type="file"
-    id="uploadfile"
-    accept=".jpg, .jpeg, .png, .pdf"
-    onChange={handleImageUpload}
-    multiple
-    style={{ display: 'none' }} // Hide the default file input
-  />
-  <label htmlFor="uploadfile" className="w-[100%] py-[10px] px-4 text-[#fff] text-center font-inter bg-[#ff80fd] rounded-lg cursor-pointer">
-    Upload
-  </label>
-</div>
+                    {imageList.length === 0 ? ("Uploaded Images show here!") : (imageList.map((image, index) => (
+                      <div key={index} className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f] cursor-pointer" onClick={() => setSelectedImage(image.url)}>
+                          {image.name}
+                        </div>
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">
+                          {image.size}
+                        </div>
+                      </div>
+                    )))}
+                  </div>
+                  <div className="w-[100%] mt-[10px] flex justify-center">
+                    <input
+                      type="file"
+                      id="uploadfile"
+                      accept=".jpg, .jpeg, .png, .pdf"
+                      onChange={handleImageUpload}
+                      multiple
+                      style={{ display: 'none' }} // Hide the default file input
+                    />
+                    <label htmlFor="uploadfile" className="w-[100%] py-[10px] px-4 text-[#fff] text-center font-inter bg-[#ff80fd] rounded-lg cursor-pointer">
+                      Upload
+                    </label>
+                  </div>
 
                   <div className="w-[100%] mt-[10px]">
                     <button className="w-[100%] py-[10px] text-[#000] font-inter bg-[#80ffab] rounded-lg">
@@ -456,24 +485,24 @@ const page = () => {
                   </div>
                 </div>
                 <div className="lg:w-[70%] w-[100%] lg:block hidden">
-                {selectedImage ? <Image src={selectedImage} alt="Selected" width={800} height={800}/> : <Image src={truckArch} width={800} height={800}/>}
+                  {selectedImage ? <Image src={selectedImage} alt="Selected" width={800} height={800} /> : <Image src={truckArch} width={800} height={800} />}
                 </div>
                 <div className="lg:w-[70%] w-[100%] lg:hidden block">
-                {selectedImage ? <Image src={selectedImage} alt="Selected" width={500} height={500}/> : <Image src={responsiveTruck} width={500} height={500}/>}
+                  {selectedImage ? <Image src={selectedImage} alt="Selected" width={500} height={500} /> : <Image src={responsiveTruck} width={500} height={500} />}
 
                 </div>
               </div>
               <div className="flex w-[30%] justify-center gap-[30px] m-auto pb-[80px]">
                 <div >
-                <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">All of our trucks are</p>
-                  </div>
-                  <div>
+                  <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">All of our trucks are</p>
+                </div>
+                <div>
                   <p className="font-inter font-[500] text-[15px] leading-[16px] tracking-[-0.5px] text-[#000]">black</p>
                   <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">and</p>
                   <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">unbranded </p>
-                  <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">to give you <br/>maximum transparency</p>
-                  </div>
+                  <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">to give you <br />maximum transparency</p>
                 </div>
+              </div>
             </div>
           </div>
         </div>
@@ -533,7 +562,7 @@ const page = () => {
                 <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Specify the dates</p>
                 <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Attach your advertising materials</p>
                 <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Provide personal information</p>
-                <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px] my-[10px] flex items-center gap-[5px]"><input type="checkbox" className="cursor-pointer"/> Can be Skipped for now</div>
+                <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px] my-[10px] flex items-center gap-[5px]"><input type="checkbox" className="cursor-pointer" /> Can be Skipped for now</div>
               </div>
             </div>
             <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] my-[100px]">
@@ -562,6 +591,7 @@ const page = () => {
                 <input
                   type="text"
                   placeholder="Enter Name"
+                  onChange={e => setFirstName(e.target.value)}
                   className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"
                 />
               </div>
@@ -572,6 +602,7 @@ const page = () => {
                 <input
                   type="text"
                   placeholder="Enter Last Name"
+                  onChange={e => setLastName(e.target.value)}
                   className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"
                 />
               </div>
@@ -582,6 +613,7 @@ const page = () => {
                 <input
                   type="Email"
                   placeholder="Enter Email"
+                  onChange={e => setEmail(e.target.value)}
                   className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"
                 />
               </div>
@@ -592,6 +624,7 @@ const page = () => {
                 <input
                   type="number"
                   placeholder="Enter Phone Number"
+                  onChange={e => setPhone(e.target.value)}
                   className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"
                 />
               </div>
@@ -602,6 +635,7 @@ const page = () => {
                 <input
                   type="text"
                   placeholder="Your Company Name"
+                  onChange={e => setCompany(e.target.value)}
                   className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"
                 />
               </div>
@@ -612,11 +646,13 @@ const page = () => {
                 <input
                   type="text"
                   placeholder="Enter Driver Notes"
+                  onChange={e => setDriverNotes(e.target.value)}
                   className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"
                 />
               </div>
               <button
                 type="submit"
+                onClick={handleSubmit}
                 className="w-[100%] py-[10px] text-[#fff] font-inter bg-[#ff80fd] rounded-lg cursor-pointer"
               >
                 Submit
