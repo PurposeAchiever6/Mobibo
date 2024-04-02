@@ -1,0 +1,45 @@
+/* Slider.css */
+
+/* Style for the buttons */
+.icon-button {
+    background-color: #fff; /* Non-active background color */
+    color: #333; /* Non-active text color */
+    border: 2px solid #ccc; /* Non-active border */
+    cursor: pointer;
+  }
+  
+  .icon-button[data-index='0'] {
+    background-color: #007bff; /* Active background color for index 0 */
+    color: #fff; /* Active text color for index 0 */
+    border: 2px solid #007bff; /* Active border for index 0 */
+  }
+  
+  .icon-button[data-index='1'] {
+    background-color: #ff5733; /* Active background color for index 1 */
+    color: #fff; /* Active text color for index 1 */
+    border: 2px solid #ff5733; /* Active border for index 1 */
+  }
+  
+  /* Add styles for other indices as needed */
+  .invoice-page{
+    margin: 0px auto;
+  }
+  @media (prefers-color-scheme: dark){
+.dark\:border-gray-600 {
+    --tw-border-opacity: 1;
+    border-color: rgb(75 85 99 / var(--tw-border-opacity));
+    border: 1.5px solid #E6E6E8;
+    background-color: white;
+}}
+.after\:transition-all::after {
+  content: var(--tw-content);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  background-color: #DBDADE;
+}
+
+label.ant-checkbox-wrapper.ant-checkbox-group-item.css-dev-only-do-not-override-1vr7spz {
+    display: flex;
+    flex-direction: column-reverse;
+}

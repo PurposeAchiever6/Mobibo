@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import { ConfigProvider } from "antd";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -10,8 +10,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    
     <html lang="en">
+       <ConfigProvider
+    theme={{
+      components: {
+        Modal: {
+          contentBg	: "#e4e4e4"
+        },
+      },
+    }}>
       <body className={inter.className}>{children}</body>
+      </ConfigProvider>
     </html>
   );
 }
