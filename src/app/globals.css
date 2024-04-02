@@ -356,7 +356,17 @@
 .routes-right{
   margin-left: 80px;
 }
+/* :where(.css-dev-only-do-not-override-nnuwmp).ant-modal{
+  top: 0px !important;
+  margin: 0px !important;
+  padding-bottom: 0px !important;
 
+}
+:where(.css-dev-only-do-not-override-nnuwmp).ant-modal .ant-modal-content{
+  width: 1280px;
+  border-radius: 0px;
+  background-color: #e4e4e4;
+} */
 @media screen and (max-width:580px) {
 .hero-banner{
   height: 200px;

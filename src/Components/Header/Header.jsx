@@ -3,9 +3,21 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import mobiboLogo from "@/Assests/mobibo-logo.svg"
 import { CloseOutlined, MenuOutlined } from '@ant-design/icons';
+import { Button, Modal } from 'antd';
+import Invoice from '../user/UserMain';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   const handleScroll = (value) =>{
     if (value === "Feature") {
@@ -80,10 +92,16 @@ const Header = () => {
           </div>
         </div>
         <div className="flex gap-[20px]">
-          <button className=' order-button'>Order</button>
+          <button className=' order-button' onClick={showModal}>Order</button>
           <button onClick={() => setIsOpen(!isOpen)} className="menu-toggle">
             {isOpen? <CloseOutlined/> : <MenuOutlined/>}
           </button>
+          <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel} width={1290} footer={null}
+          style={{maxWidth:"1280px",width:'100%', backgroundColor:"#e4e4e4",top:0,left:0,right:0,bottom:0 ,paddingBottom:"0px" ,margin:"0px"}}
+          >
+         <Invoice/>
+         </Modal>
+
         </div>
      </div>      
     </div>
