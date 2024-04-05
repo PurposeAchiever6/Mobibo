@@ -20,42 +20,6 @@ import { useRouter } from 'next/navigation';
 
 const Review = ({onPreviousClick}) => {
   const router = useRouter(); 
-    const [selectedCity, setSelectedCity] = useState("Lahore");
-    const [selectedCountry, setSelectedCountry] = useState("Pakistan");
-    const { Option } = Select;
-    const handleCityChange = (value) => {
-      setSelectedCity(value);
-    };
-  
-    const handleCountryChange = (value) => {
-      setSelectedCountry(value);
-    };
-    const [workHours, setWorkHours] = useState({
-      sunday: { startTime: "12:00", endTime: "18:00" },
-      monday: { startTime: "12:00", endTime: "18:00" },
-      tuesday: { startTime: "12:00", endTime: "18:00" },
-      wednesday: { startTime: "12:00", endTime: "18:00" },
-      thursday: { startTime: "12:00", endTime: "18:00" },
-      friday: { startTime: "12:00", endTime: "18:00" },
-      saturday: { startTime: "12:00", endTime: "18:00" },
-    });
-    const handleStartTimeChange = (event, day) => {
-      setWorkHours({
-        ...workHours,
-        [day]: { ...workHours[day], startTime: event.target.value },
-      });
-    };
-  
-    const handleEndTimeChange = (event, day) => {
-      setWorkHours({
-        ...workHours,
-        [day]: { ...workHours[day], endTime: event.target.value },
-      });
-    };
-    const previousClick =()=>{
-      onPreviousClick();
-    }
-
     const [formData, setFormData] = useState({
       firstName: "",
       lastName: "",
