@@ -37,12 +37,12 @@
   width: 70%;
   margin: 0px auto;
 }
-.tab-btn:hover{
+.tab-btn-active:hover{
   border-radius: 1.75em;
   background-color: #A57BFF;
   color: #ffff;
 }
-.tab-btn button{
+.tab-btn{
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.5px;
@@ -51,7 +51,7 @@
   font-family: "Inter", sans-serif;
 
 }
-.tab-btn-mobile button{
+.tab-btn-mobile{
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.5px;
@@ -59,7 +59,7 @@
   padding: 0.75rem 1rem;
   font-family: "Inter", sans-serif;
 }
-.tab-btn-mobile button:hover{
+.tab-buttons-active{
   border-radius: 1.75em;
   background-color: #A57BFF;
   color: #ffff;
@@ -356,20 +356,29 @@
 .routes-right{
   margin-left: 80px;
 }
-/* :where(.css-dev-only-do-not-override-nnuwmp).ant-modal{
-  top: 0px !important;
-  margin: 0px !important;
-  padding-bottom: 0px !important;
-
+.swiper-pagination-bullet-active{
+  background:  #ff80fd !important;
 }
-:where(.css-dev-only-do-not-override-nnuwmp).ant-modal .ant-modal-content{
-  width: 1280px;
-  border-radius: 0px;
-  background-color: #e4e4e4;
-} */
+.swiper-pagination-bullet{
+  background:  #f9ff8a !important;
+}
+.modal-bg-side{
+  background-image: url(../Assests/truck-archi.png);
+  background-size: cover;
+  background-repeat: no-repeat
+}
+.modal-bg-back{
+  background-image: url(../Assests/back-truck.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 @media screen and (max-width:580px) {
 .hero-banner{
   height: 200px;
+}
+.modal-bg-side{
+  background-size: contain;
 }
 .adCampain-wrap{
   flex-direction: column;

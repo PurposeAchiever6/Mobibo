@@ -1,9 +1,6 @@
 import React from 'react'
 
 const CompanyCard = (props) => {
-
-    console.log(props)
-
   return (
     <div>
       <div className="" style={{backgroundImage: `url(${props.image.src})`,backgroundRepeat:"no-repeat",backgroundSize:'100%'}}>

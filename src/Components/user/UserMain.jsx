@@ -32,7 +32,7 @@ const Invoice = () => {
     <div className="flex flex-row">
       <div className="flex-grow">
         <div className="p-4 border-b-[1px]  ">
-          <div className="flex justify-center text-center gap-6 py-4 cursor-pointer items-end ">
+          <div className="flex justify-center text-center lg:gap-6 gap-4 py-4 cursor-pointer items-end ">
             <div
               className={`tab ${activeTab === 1 ? "bg-[#A57BFF] px-4 py-2 rounded-full font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px] text-[#fff]" : "bg-[#f2f2f7] px-4 py-2 rounded-full font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px] text-[#3C3C43]"}`}
               // onClick={() => handleTabClick(1)}
