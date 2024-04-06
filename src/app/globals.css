@@ -84,6 +84,7 @@
 .routes-right{
   background-image: url("../Assests/AdsSettings-2.png");
   background-size: contain;
+  background-repeat: no-repeat;
 }
 .navlinks{
   list-style: none;
@@ -286,7 +287,9 @@
   flex-direction: column;
   align-items: center; /* Align month name to the left */
 }
-
+.ant-modal-content{
+  width: 100vw;
+}
 .react-calendar__navigation {
   display: flex;
   justify-content: flex-end; /* Align navigation arrows to the right */
@@ -364,6 +367,11 @@
 }
 .modal-bg-side{
   background-image: url(../Assests/truck-archi.png);
+  background-size: contain;
+  background-repeat: no-repeat
+}
+.truckShow-bg-side{
+  background-image: url(../Assests/truck-archi.png);
   background-size: cover;
   background-repeat: no-repeat
 }
@@ -373,9 +381,19 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+.truckShow-bg-back{
+  background-image: url(../Assests/back-truck.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 @media screen and (max-width:580px) {
 .hero-banner{
   height: 200px;
+}
+.truckShow-bg-side{
+  background-size: contain;
 }
 .modal-bg-side{
   background-size: contain;

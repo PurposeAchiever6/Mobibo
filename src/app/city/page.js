@@ -419,37 +419,58 @@ in Boston <br />
           <div className="lg:w-[33.33%] w-[100%]">
             <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">
               1. &nbsp;Application for advertising placement
+              <div>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Specify the city</p>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Specify the dates</p>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Attach your advertising materials</p>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Provide personal information</p>
+                <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px] my-[10px] flex items-center gap-[5px]"><button type="button" className="cursor-pointer bg-[#FF80FD] text-[#fff] px-4 rounded-lg py-1 hover:border-[1px] hover:border-[#FF80FD] hover:bg-[#fff] hover:text-[#FF80FD]"> Can be Skipped for now </button></div>
+              </div>
             </div>
-            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] my-[90px]">
+            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] my-[100px]">
               <p>
                 2. &nbsp;Coordinating all points with our advertising strategist
               </p>{" "}
               <span className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">
                 Who will contact you.
               </span>
+              <div>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Creatives</p>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Route optimization</p>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Measurement</p>
+              </div>
             </div>
             <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">
               3. &nbsp;Payment
             </div>
           </div>
           <div className="lg:w-[33.33%] w-[100%]">
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Specify the city</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Specify the dates</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Attach your advertising materials</div>
-           <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C4399] text-right">сan be skipped and sent after payment</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Provide personal information</div>
-           <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C4399] text-right">
-            <p>First Name</p>
-            <p>Last name</p>
-            <p>Email</p>
-            <p>Phone</p>
-            <p>Company name</p>
-            <p>Notes to LED truck driver</p>
-           </div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Creatives</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Route optimization</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Measurement</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#3C3C4399]">Etc</div>
+          <form>
+              <div className="flex flex-col gap-[10px] mb-[10px]">
+                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Name</label>
+                <input type="text" placeholder="Enter Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+              </div>
+              <div className="flex flex-col gap-[10px] mb-[10px]">
+                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Last Name</label>
+                <input type="text" placeholder="Enter Last Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+              </div>
+              <div className="flex flex-col gap-[10px] mb-[10px]">
+                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Email</label>
+                <input type="Email" placeholder="Enter Email" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+              </div>
+              <div className="flex flex-col gap-[10px] mb-[10px]">
+                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Phone</label>
+                <input type="number" placeholder="Enter Phone Number" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+              </div >
+              <div className="flex flex-col gap-[10px] mb-[10px]">
+                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Company</label>
+                <input type="text" placeholder="Your Company Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+              </div>
+              <div className="flex flex-col gap-[10px] mb-[10px]">
+                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Driver Notes</label>
+                <input type="text" placeholder="Enter Driver Notes" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+              </div>
+            </form>
           </div>
         </div>
         <div className="m-auto w-[100%] max-w-[1280px] p-4 flex justify-center"><button className="bg-[#80FFAB] px-4 py-2 cursor-pointer rounded-lg font-inter font-[500] hover:border-[1px] hover:bg-[#fff] hover:border-[#80FFAB] hover:text-[#80FFAB]">Run Ads</button></div>

@@ -31,84 +31,86 @@ import Routesimage from "@/Assests/Routesimage.svg";
 import AdCampain from "@/Components/AdCampain/AdCampain";
 import AllCompainRoutes from "@/Components/AllCompainRoutes/AllCompainRoutes";
 import responsiveTruck from "@/Assests/responsiveTruck.png";
-import axios from 'axios';
-import emailjs from '@emailjs/browser';
-import { orderJson } from "@/app/api/utils/json.mjs"
+import axios from "axios";
+import emailjs from "@emailjs/browser";
+import { orderJson } from "@/app/api/utils/json.mjs";
 import dotenv from "dotenv";
 import Invoice from "../user/UserMain";
 import { Modal } from "antd";
+import ThreeScene from "../ThreeScene/ThreeScene";
 
-dotenv.config()
+dotenv.config();
 
 const Presentation = () => {
   const [selectedRange, setSelectedRange] = useState([new Date(), new Date()]);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageSide, setSelectedImageSide] = useState(null);
+  const [selectedImageBack, setSelectedImageBack] = useState(null);
   const [imageList, setImageList] = useState([]);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [company, setCompany] = useState('');
-  const [driverNotes, setDriverNotes] = useState('');
-  const [truckSide ,setTruckSide] = useState("side");
-  const [viewType ,setViewType] = useState("2d");
- const [isModalOpen, setIsModalOpen] = useState(false);
- const [formData, setFormData] = useState({
-  location: "",
-});
-
-const [errors, setErrors] = useState({});
-
-const handleInputChange = (e) => {
-  const { name, value } = e.target;
-
-  setFormData({
-    ...formData,
-    [name]: value,
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [driverNotes, setDriverNotes] = useState("");
+  const [truckSide, setTruckSide] = useState("side");
+  const [viewType, setViewType] = useState("2d");
+  const [fileSpecsSide , setFileSpecsSide] = useState();
+  const [fileSpecsBack , setFileSpecsBack] = useState();
+  const [fileTypeSide , setFileTypeSide] = useState();
+  const [fileTypeBack , setFileTypeBack] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    location: "",
   });
-      if (value.trim() === '') {
-    setErrors({
-      ...errors,
-      [name]: `${name.charAt(0).toUpperCase() + name.slice(1)} is required`,
-    });
-  } else {
-    setErrors({
-      ...errors,
-      [name]: undefined,
-    });
 
-    if (name === 'email') {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(value)) {
-        setErrors({
-          ...errors,
-          [name]: 'Invalid email format',
-        });
+  const [errors, setErrors] = useState({});
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+    if (value.trim() === "") {
+      setErrors({
+        ...errors,
+        [name]: `${name.charAt(0).toUpperCase() + name.slice(1)} is required`,
+      });
+    } else {
+      setErrors({
+        ...errors,
+        [name]: undefined,
+      });
+
+      if (name === "email") {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+          setErrors({
+            ...errors,
+            [name]: "Invalid email format",
+          });
+        }
       }
     }
-  }
-};
+  };
 
+  const handlelocationSubmit = () => {
+    const newErrors = {};
 
+    if (!formData.location.trim()) {
+      newErrors.location = "Please enter the location";
+    }
+    if (Object.keys(newErrors).length === 0) {
+      console.log("No validation errors, calling onNextClick");
+      showModal();
+    } else {
+      console.log("Validation errors found, not calling onNextClick");
+      setErrors(newErrors);
+    }
+  };
 
-const handlelocationSubmit = () => {
-  const newErrors = {};
-
-  if (!formData.location.trim()) {
-    newErrors.location = "Please enter the location";
-  } 
-  if (Object.keys(newErrors).length === 0) {
-    console.log("No validation errors, calling onNextClick");
-    showModal();
-  } 
-   else {
-    console.log("Validation errors found, not calling onNextClick");
-    setErrors(newErrors);
-
-  }
-};
-
- const showModal = () => {
+  const showModal = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
@@ -120,18 +122,33 @@ const handlelocationSubmit = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    var templateParams = await orderJson(firstName, lastName, email, phone, company, driverNotes);
-    axios.post('/api/order', await orderJson(firstName, lastName, email, phone, company, driverNotes));
-    console.log(process.env.NEXT_PUBLIC_SERVICE_ID)
+    var templateParams = await orderJson(
+      firstName,
+      lastName,
+      email,
+      phone,
+      company,
+      driverNotes
+    );
+    axios.post(
+      "/api/order",
+      await orderJson(firstName, lastName, email, phone, company, driverNotes)
+    );
+    console.log(process.env.NEXT_PUBLIC_SERVICE_ID);
     emailjs
-      .send(process.env.NEXT_PUBLIC_SERVICE_ID, process.env.NEXT_PUBLIC_TEMPLATE_ID, templateParams, process.env.NEXT_PUBLIC_PUBLIC_KEY)
+      .send(
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID,
+        templateParams,
+        process.env.NEXT_PUBLIC_PUBLIC_KEY
+      )
       .then(
         () => {
-          console.log('Email sending SUCCESS!');
+          console.log("Email sending SUCCESS!");
         },
         (error) => {
-          console.log('Email sending FAILED...', error);
-        },
+          console.log("Email sending FAILED...", error);
+        }
       );
   }
   const companyData = [
@@ -230,11 +247,27 @@ const handlelocationSubmit = () => {
   const handleDateChange = (date) => {
     setSelectedRange(date);
   };
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0]; 
-    setSelectedImage(file);
+  const handleImageUploadSide = (event) => {
+    const file = event.target.files[0];
+    setSelectedImageSide(file);
     setImageList(file.name);
-  };
+    setFileSpecsSide(convertBytesToMB(file.size));
+    setFileTypeSide(file.type);
+};
+
+const convertBytesToMB = (bytes) => {
+    return (bytes / (1024 * 1024)).toFixed(2); // Convert bytes to megabytes with 2 decimal places
+};
+
+  const handleImageUploadBack = (event) => {
+      const file = event.target.files[0];
+      setSelectedImageBack(file);
+      setImageList(file.name);
+      setFileSpecsBack(convertBytesToMB(file.size));
+      setFileTypeBack(file.type)
+
+    };
+
 
   return (
     <>
@@ -472,7 +505,10 @@ const handlelocationSubmit = () => {
               </div>
             </div>
             <div className="lg:w-[20%] w-[80%] m-auto rounded-lg my-[10px]">
-              <button className="bg-[#80ffab] w-[100%] py-2 rounded-lg cursor-pointer" onClick={showModal}>
+              <button
+                className="bg-[#80ffab] w-[100%] py-2 rounded-lg cursor-pointer"
+                onClick={showModal}
+              >
                 Order
               </button>
             </div>
@@ -501,81 +537,187 @@ const handlelocationSubmit = () => {
               <div className="font-inter font-[500] lg:text-[44px] text-[25px] leading-[44px] lg:tracking-[-2.65px] tracking-[0px] lg:py-[150px] py-[40px] text-center">
                 Test your ideas
               </div>
-              <div className="flex lg:flex-row flex-col w-[100%] gap-[40px] pb-[100px] justify-between">
+             {isModalOpen ? "" : <div className="flex lg:flex-row flex-col w-[100%] gap-[40px] pb-[100px] justify-between">
                 <div className="lg:w-[30%] w-[90%] ml-4">
                   <div className="bg-[#f9ff8a] rounded-full flex w-[100%] p-[2px]">
-                  <button className={truckSide === "side" ? "bg-[#a57bff] text-[#fff] rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]" : "rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]"} onClick={() => setTruckSide("side")}>
-                  Side
-                </button>
-                <button className={truckSide === "back" ? "bg-[#a57bff] text-[#fff] rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]" : "rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]"} onClick={() => setTruckSide("back")}>
-                  Back
-                </button>
-              </div>
-              <div className="bg-[#f9ff8a] rounded-full flex w-[100%] p-[2px] mt-[10px]">
-                <button className={viewType === "2d" ?  "bg-[#a57bff] text-[#fff] rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]" : "rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]"} onClick={() => setViewType("2d")}>
-                  2D
-                </button>
-                <button className={viewType === "3d" ?  "bg-[#a57bff] text-[#fff] rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]" : "rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]"} onClick={() => setViewType("3d")}>
-                  3D
-                </button>
+                    <button
+                      className={
+                        truckSide === "side"
+                          ? "bg-[#a57bff] text-[#fff] rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]"
+                          : "rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]"
+                      }
+                      onClick={() => setTruckSide("side")}
+                    >
+                      Side
+                    </button>
+                    <button
+                      className={
+                        truckSide === "back"
+                          ? "bg-[#a57bff] text-[#fff] rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]"
+                          : "rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]"
+                      }
+                      onClick={() => setTruckSide("back")}
+                    >
+                      Back
+                    </button>
                   </div>
-                  <div className="bg-[#fff] rounded-lg p-4 mt-[10px]">
-                  <p>{imageList ? imageList : <div>Uploaded image will show here</div>}</p> {/* Display selected image name */}
+                  <div className="bg-[#f9ff8a] rounded-full flex w-[100%] p-[2px] mt-[10px]">
+                    <button
+                      className={
+                        viewType === "2d"
+                          ? "bg-[#a57bff] text-[#fff] rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]"
+                          : "rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]"
+                      }
+                      onClick={() => setViewType("2d")}
+                    >
+                      2D
+                    </button>
+                    <button
+                      className={
+                        viewType === "3d"
+                          ? "bg-[#a57bff] text-[#fff] rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]"
+                          : "rounded-full w-[50%] font-inter font-[600] text-[12px] leading-[16px] tracking-[0.05px] py-[6px]"
+                      }
+                      onClick={() => setViewType("3d")}
+                    >
+                      3D
+                    </button>
                   </div>
+                  {truckSide === "side" ?
+                  <div className="bg-[#fff] rounded-lg p-4 mt-[10px] ">
+                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Advertising size</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">11.5x6.5’</div>
+                  </div>
+                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Available for</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">Vedio/Image</div>
+                  </div>
+                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">File Formats</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">{fileTypeSide ? fileTypeSide : "MP4/MOV/JPEG"}</div>
+                  </div>
+                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Min Resolution</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">1280x720px</div>
+                  </div>
+                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Max File Size</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">{fileSpecsSide ? fileSpecsSide+'mb' : "50mb"}</div>
+                  </div>
+                    </div>
+                  : 
+                  <div className="bg-[#fff] rounded-lg p-4 mt-[10px] ">
+                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Advertising size</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">11.5x6.5’</div>
+                  </div>
+                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Available for</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">Vedio/Image</div>
+                  </div>
+                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">File Formats</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">{fileTypeBack ? fileTypeBack : "MP4/MOV/JPEG"}</div>
+                  </div>
+                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Min Resolution</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">1280x720px</div>
+                  </div>
+                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Max File Size</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">{fileSpecsBack ? fileSpecsBack+"mb" : "50mb"}</div>
+                  </div>
+                    </div>}
                   <div className="w-[100%] mt-[10px] flex justify-center">
+                    {truckSide ==='side'?
                     <input
                       type="file"
                       id="uploadfile"
                       accept=".jpg, .jpeg, .png, .pdf"
-                      onChange={handleImageUpload}
+                      onChange={handleImageUploadSide}
                       multiple
-                      style={{ display: 'none' }} // Hide the default file input
+                      style={{ display: "none" }} // Hide the default file input
                     />
-                    <label htmlFor="uploadfile" className="w-[100%] py-[10px] px-4 text-[#fff] text-center font-inter bg-[#ff80fd] rounded-lg cursor-pointer">
+                  :
+                  <input
+                      type="file"
+                      id="uploadfile"
+                      accept=".jpg, .jpeg, .png, .pdf"
+                      onChange={handleImageUploadBack}
+                      multiple
+                      style={{ display: "none" }} // Hide the default file input
+                    />}
+                    <label
+                      htmlFor="uploadfile"
+                      className="w-[100%] py-[10px] px-4 text-[#fff] text-center font-inter bg-[#ff80fd] rounded-lg cursor-pointer"
+                    >
                       Upload
                     </label>
                   </div>
 
                   <div className="w-[100%] mt-[10px]">
-                    <button className="w-[100%] py-[10px] text-[#000] font-inter bg-[#80ffab] rounded-lg" onClick={showModal}>
+                    <button
+                      className="w-[100%] py-[10px] text-[#000] font-inter bg-[#80ffab] rounded-lg"
+                      onClick={showModal}
+                    >
                       Order
                     </button>
                   </div>
                 </div>
-                {truckSide === "side" ?
-            <div className="lg:w-[70%] w-[100%]  modal-bg-side p-4 lg:px-[55px] px-[25px] lg:h-[412px] h-[198px] ">
-              {selectedImage && ( // Display image preview if an image is selected
-                <img
-                  src={URL.createObjectURL(selectedImage)}
-                  alt="Selected"
-                  width={300}
-                  height={100}
-                  className="lg:h-[276px] h-[133px] lg:w-[491px] w-[240px] mt-[-10px] lg:mt-[2px] lg:ml-[6px]"
-                  style={{borderTopRightRadius:"13px"}}
-                />
-              )}
-            </div>:
-            <div className="lg:w-[70%] w-[100%]  modal-bg-back p-4  lg:pl-[284px] pl-[70px] h-[293px] lg:h-[400px]">
-            {selectedImage && ( 
-              <img
-                src={URL.createObjectURL(selectedImage)}
-                alt="Selected"
-                width={300}
-                height={100}
-                className="lg:h-[271px] h-[192px] lg:w-[294px] w-[206px] ml-[41px] lg:ml-[0px]"
-              />
-            )}
-          </div>}
-              </div>
+                {viewType === "2d" ? (
+                  truckSide === "side" ? (
+                    <div className="lg:w-[70%] w-[100%]  modal-bg-side p-4 lg:px-[55px] px-[25px] lg:h-[412px] h-[198px] ">
+                      {selectedImageSide && ( // Display image preview if an image is selected
+                        <img
+                          src={URL.createObjectURL(selectedImageSide)}
+                          alt="Selected"
+                          width={300}
+                          height={100}
+                          className="lg:h-[268px] h-[124px] lg:w-[477px] w-[222px] mt-[-10px] lg:mt-[2px] lg:ml-[6px]"
+                          style={{ borderTopRightRadius: "13px" }}
+                        />
+                      )}
+                    </div>
+                  ) : (
+                    <div className="lg:w-[70%] w-[100%]  modal-bg-back p-4  lg:pl-[284px] pl-[70px] h-[293px] lg:h-[400px]">
+                      {selectedImageBack && (
+                        <img
+                          src={URL.createObjectURL(selectedImageBack)}
+                          alt="Selected"
+                          width={300}
+                          height={100}
+                          className="lg:h-[271px] h-[192px] lg:w-[294px] w-[206px] ml-[24px] lg:ml-[0px]"
+                        />
+                      )}
+                    </div>
+                  )
+                ) : (
+                  <div className="lg:w-[70%] w-[100%]">
+                   Under Process!
+                  </div>
+                )}
+              </div>}
               <div className="flex w-[30%] justify-center gap-[30px] m-auto pb-[80px]">
-                <div >
-                  <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">All of our trucks are</p>
+                <div>
+                  <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">
+                    All of our trucks are
+                  </p>
                 </div>
                 <div>
-                  <p className="font-inter font-[500] text-[15px] leading-[16px] tracking-[-0.5px] text-[#000]">black</p>
-                  <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">and</p>
-                  <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">unbranded </p>
-                  <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">to give you <br />maximum transparency</p>
+                  <p className="font-inter font-[500] text-[15px] leading-[16px] tracking-[-0.5px] text-[#000]">
+                    black
+                  </p>
+                  <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">
+                    and
+                  </p>
+                  <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">
+                    unbranded{" "}
+                  </p>
+                  <p className="font-inter font-[400] text-[14px] leading-[16px] tracking-[-0.5px] text-[#7f7f83]">
+                    to give you <br />
+                    maximum transparency
+                  </p>
                 </div>
               </div>
             </div>
@@ -617,86 +759,118 @@ const handlelocationSubmit = () => {
                 className="placeholder:text-[#e4e4e4] placeholder:text-[14px] text-[14px] font-inter placeholder:font-inter bg-[#fff] border-none px-4 py-1 focus:outline-none rounded-lg"
               />
               {errors.location && (
-                  <p className="text-sm text-[red] mt-1">{errors.location}</p>
-                )}
+                <p className="text-sm text-[red] mt-1">{errors.location}</p>
+              )}
               <div className="lg:w-[50%] w-[100%] font-inter font-[400] text-center text-[#3C3C43] my-[20px] text-[14px] leading-[16px] tracking-[-0.5px]">
                 and we will try to organize an advertising campaign for you
                 there
               </div>
               <div>
-                <button className="bg-[#FF80FD] rounded-lg text-[#fff] font-inter p-3 cursor-pointer hover:bg-[#e4e4e4] hover:text-[#FF80FD] hover:border-[1px] hover:border-[#FF80FD]" onClick={handlelocationSubmit}>
+                <button
+                  className="bg-[#FF80FD] rounded-lg text-[#fff] font-inter p-3 cursor-pointer hover:bg-[#e4e4e4] hover:text-[#FF80FD] hover:border-[1px] hover:border-[#FF80FD]"
+                  onClick={handlelocationSubmit}
+                >
                   Offer
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="m-auto w-[100%] max-w-[1280px] p-4 flex lg:flex-row flex-col w-[100%] my-[50px] gap-[30px] lg:gap-[0px]">
+         <div className="m-auto w-[100%] max-w-[1280px] p-4 flex lg:flex-row flex-col w-[100%] my-[50px] gap-[30px] lg:gap-[0px]">
           <div className="lg:w-[33.33%] w-[100%]">
             <Image src={orderProcess} />
           </div>
           <div className="lg:w-[33.33%] w-[100%]">
             <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">
               1. &nbsp;Application for advertising placement
+              <div>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Specify the city</p>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Specify the dates</p>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Attach your advertising materials</p>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Provide personal information</p>
+                <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px] my-[10px] flex items-center gap-[5px]"><button type="button" className="cursor-pointer bg-[#FF80FD] text-[#fff] px-4 rounded-lg py-1 hover:border-[1px] hover:border-[#FF80FD] hover:bg-[#fff] hover:text-[#FF80FD]"> Can be Skipped for now </button></div>
+              </div>
             </div>
-            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] my-[90px]">
+            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] my-[100px]">
               <p>
                 2. &nbsp;Coordinating all points with our advertising strategist
               </p>{" "}
               <span className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">
                 Who will contact you.
               </span>
+              <div>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Creatives</p>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Route optimization</p>
+                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Measurement</p>
+              </div>
             </div>
             <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">
               3. &nbsp;Payment
             </div>
           </div>
           <div className="lg:w-[33.33%] w-[100%]">
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Specify the city</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Specify the dates</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Attach your advertising materials</div>
-           <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C4399] text-right">сan be skipped and sent after payment</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Provide personal information</div>
-           <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C4399] text-right">
-            <p>First Name</p>
-            <p>Last name</p>
-            <p>Email</p>
-            <p>Phone</p>
-            <p>Company name</p>
-            <p>Notes to LED truck driver</p>
-           </div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Creatives</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Route optimization</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Measurement</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#3C3C4399]">Etc</div>
+          <form>
+              <div className="flex flex-col gap-[10px] mb-[10px]">
+                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Name</label>
+                <input type="text" placeholder="Enter Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+              </div>
+              <div className="flex flex-col gap-[10px] mb-[10px]">
+                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Last Name</label>
+                <input type="text" placeholder="Enter Last Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+              </div>
+              <div className="flex flex-col gap-[10px] mb-[10px]">
+                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Email</label>
+                <input type="Email" placeholder="Enter Email" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+              </div>
+              <div className="flex flex-col gap-[10px] mb-[10px]">
+                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Phone</label>
+                <input type="number" placeholder="Enter Phone Number" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+              </div >
+              <div className="flex flex-col gap-[10px] mb-[10px]">
+                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Company</label>
+                <input type="text" placeholder="Your Company Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+              </div>
+              <div className="flex flex-col gap-[10px] mb-[10px]">
+                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Driver Notes</label>
+                <input type="text" placeholder="Enter Driver Notes" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+              </div>
+            </form>
           </div>
         </div>
-        <div className="m-auto w-[100%] max-w-[1280px] p-4 flex justify-center"><button className="bg-[#80FFAB] px-4 py-2 cursor-pointer rounded-lg font-inter font-[500] hover:border-[1px] hover:bg-[#fff] hover:border-[#80FFAB] hover:text-[#80FFAB]">Run Ads</button></div>
+        <div className="m-auto w-[100%] max-w-[1280px] p-4 flex justify-center">
+          <button className="bg-[#80FFAB] px-4 py-2 cursor-pointer rounded-lg font-inter font-[500] hover:border-[1px] hover:bg-[#fff] hover:border-[#80FFAB] hover:text-[#80FFAB]">
+            Run Ads
+          </button>
+        </div>
         <Modal
-              open={isModalOpen}
-              onOk={handleOk}
-              onCancel={handleCancel}
-              width="100%"
-              footer={null}
-              style={{
-                maxWidth: "1280px",
-                backgroundColor: "#e4e4e4",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                paddingBottom: "0px",
-                margin: "0px",
-                "@media (min-width: 600px)": {
-                  width: "80%", // or whatever width you want above 600px viewport width
-                },
-                "@media (min-width: 900px)": {
-                  width: "50%", // or whatever width you want above 900px viewport width
-                },
-              }}
-            > 
-              <Invoice />
-            </Modal>
+  open={isModalOpen}
+  onOk={handleOk}
+  onCancel={handleCancel}
+  width="100vw" // Change width to 100vw
+  footer={null}
+  centered={true}
+  style={{
+    maxWidth: "1280px",
+    height: '100vh',
+    width: '100wh',
+    backgroundColor: "#e4e4e4",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    paddingBottom: "0px",
+    margin: "0px",
+    "@media (minWidth: 600px)": {
+      width: "80%", // or whatever width you want above 600px viewport width
+    },
+    "@media (minWidth: 900px)": {
+      width: "100%", // or whatever width you want above 900px viewport width
+    },
+  }}
+> 
+  <Invoice />
+</Modal>
+
       </div>
     </>
   );
