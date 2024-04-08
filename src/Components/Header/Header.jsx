@@ -61,7 +61,7 @@ const Header = () => {
                   :nonActiveStyles
               }
             >
-                  Presentation
+                  Home
                 </Link>
 
                 <div className="border-tabs-mobile"></div>
@@ -84,7 +84,7 @@ const Header = () => {
                   : nonActiveStyles
               }
             >
-                  Blogs
+                  Blog
                 </Link>
               </div>
               <div className="navlinks-mobile">
@@ -149,7 +149,7 @@ const Header = () => {
                 :nonActiveStyles
               }
             >
-                  Presentation
+                  Home
                 </Link>
             <div className="border-tabs"></div>
             <Link
@@ -171,7 +171,7 @@ const Header = () => {
                   :nonActiveStyles
               }
             >
-                  Blogs
+                  Blog
                 </Link>
           </div>
           {currentRoute === "/" ?<div className="navlinks">

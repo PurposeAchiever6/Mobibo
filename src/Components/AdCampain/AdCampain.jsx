@@ -11,22 +11,19 @@ const AdCampain = () => {
         <div className="adCampain-sec">
           <h3 className="text-[20px] font-[400] font-inter">Before</h3>
           <p className="text-[14px] font-[400] font-inter">
-            We’ll present you with a proposed route based on our own analysis
-            and you’ll also be able to request specific locations as well.
+            We’ll present you with a proposed route based on our own analysis, and give you the option to request specific locations to target as well
           </p>
         </div>
         <div className="adCampain-sec">
           <h3 className="text-[20px] font-[400]">During</h3>
           <p className="text-[14px] font-[400]">
-            During the campaign, you’ll receive updates and optimization
-            suggestions from a dedicated team.
+            You’ll receive updates and optimizations suggestions from our team
           </p>
         </div>
         <div className="adCampain-sec">
           <h3 className="text-[20px] font-[400]">After</h3>
           <p className="text-[14px] font-[400]">
-            Post-campaign, a detailed report with GPS data, a gallery, and raw
-            data for retargeting on social media is provided.
+            Post-campaign, a detailed report with route coverage and pictures from the campaign will be provided
           </p>
         </div>
       </div>

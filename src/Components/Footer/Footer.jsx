@@ -22,7 +22,7 @@ const Footer = () => {
           <li className='footer-navigation'>About Us</li>
           <li className='footer-navigation'>Features</li>
           <li className='footer-navigation'>Experience</li>
-          <li className='footer-navigation'>Vedio</li>
+          <li className='footer-navigation'>Video</li>
           <li className='footer-navigation'>Trucks</li>
           <li className='footer-navigation'>Pricing</li>
           <li className='footer-navigation'>Ads Settings</li>
@@ -40,12 +40,12 @@ const Footer = () => {
           <div className="footer-address">418 Broadway</div>
           <div className="footer-address">STE 4725 Albany, NY 12207</div>
           <div className="footer-address" style={{lineHeight:"25px", margin:"10px 0px"}}>(718) 635–1316</div>
-          <div className="footer-address" style={{lineHeight:"25px"}}>victoria@heymobibo.com</div>
+          <div className="footer-address" style={{lineHeight:"25px"}}>joe@heymobibo.com</div>
           <div className="footer-address" style={{lineHeight:"25px"}}><button className='footer-callbtn'>Call</button></div>
         </div>
         <div className="know-sec">
           <div className="needtoknow">Everything you need to know 
-             before ordering advertising</div>
+             before running ads</div>
            <div className="footer-address"><button className='adsBlog-btn'>Ads blog</button></div>
 
         </div>

@@ -80,12 +80,12 @@ const handleFileChangeModalBack = (event) => {
                   {truckModalSide === "side" ?
                   <div className="bg-[#fff] rounded-lg p-4 mt-[10px] ">
                   <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Advertising size</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Screen</div>
                   <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">11.5x6.5’</div>
                   </div>
                   <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
                   <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Available for</div>
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">Vedio/Image</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">Video/Image</div>
                   </div>
                   <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
                   <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">File Formats</div>
@@ -103,12 +103,12 @@ const handleFileChangeModalBack = (event) => {
                   : 
                   <div className="bg-[#fff] rounded-lg p-4 mt-[10px] ">
                   <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Advertising size</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Screen</div>
                   <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">11.5x6.5’</div>
                   </div>
                   <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
                   <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Available for</div>
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">Vedio/Image</div>
+                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">Video/Image</div>
                   </div>
                   <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
                   <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">File Formats</div>
@@ -180,7 +180,7 @@ const handleFileChangeModalBack = (event) => {
                   )
                 ) : (
                   <div className="lg:w-[70%] w-[100%]">
-                   Under Process!
+                   Coming soon!
                   </div>
                 )}
                 </div>

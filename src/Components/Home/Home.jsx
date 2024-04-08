@@ -54,10 +54,10 @@ const Presentation = () => {
   const [driverNotes, setDriverNotes] = useState("");
   const [truckSide, setTruckSide] = useState("side");
   const [viewType, setViewType] = useState("2d");
-  const [fileSpecsSide , setFileSpecsSide] = useState();
-  const [fileSpecsBack , setFileSpecsBack] = useState();
-  const [fileTypeSide , setFileTypeSide] = useState();
-  const [fileTypeBack , setFileTypeBack] = useState();
+  const [fileSpecsSide, setFileSpecsSide] = useState();
+  const [fileSpecsBack, setFileSpecsBack] = useState();
+  const [fileTypeSide, setFileTypeSide] = useState();
+  const [fileTypeBack, setFileTypeBack] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     location: "",
@@ -218,31 +218,56 @@ const Presentation = () => {
     },
   ];
   const RoutesTravel = [
-    { Route: "New York" },
-    { Route: "Houston" },
-    { Route: "Phoenix (Prescott)" },
-    { Route: "Orlando-Daytona Beach-Melbourne" },
-    { Route: "Charlotte" },
-    { Route: "Nashville" },
-    { Route: "San Antonio" },
-    { Route: "Greenville-Spartanburg-Asheville-Anderson" },
-    { Route: "Jacksonville" },
-    { Route: "Birmingham (Anniston and Tuscaloosa)" },
-    { Route: "Los Angeles" },
-    { Route: "Atlanta" },
-    { Route: "Tampa-St. Petersburg (Sarasota)" },
-    { Route: "Denver" },
-    { Route: "Raleigh-Durham (Fayettville)" },
-    { Route: "Salt Lake City" },
-    { Route: "Hartford & New Haven" },
-    { Route: "Cincinatti" },
-    { Route: "Grand Rapids-Kalamazoo-Battle Creek" },
-    { Route: "Oklahoma City" },
-    { Route: "Chicago" },
-    { Route: "Boston (Manchester)" },
-    { Route: "Seattle-Tacoma" },
-    { Route: "Miami-Fort Lauderdale" },
-    { Route: "Portland, OR" },
+    "New York",
+    "Los Angeles",
+    "Chicago",
+    "Philadelphia",
+    "Dallas-Fort Worth",
+    "Atlanta",
+    "Houston",
+    "Washington-Hagerstown",
+    "Boston-Manchester",
+    "San Francisco-Oakland-San Jose",
+    "Phoenix-Prescott",
+    "Seattle-Tacoma",
+    "Tampa-St Petersburg-Sarasota",
+    "Detroit",
+    "Minneapolis-Saint Paul",
+    "Denver",
+    "Orlando-Daytona Beach-Melbourne",
+    "Miami-Fort Lauderdale",
+    "Cleveland-Akron-Canton",
+    "Sacramento-Stockton-Modesto",
+    "Charlotte",
+    "Portland, OR",
+    "Raleigh-Durham-Fayetteville",
+    "Saint Louis",
+    "Indianapolis",
+    "Pittsburgh",
+    "Nashville",
+    "Baltimore",
+    "Salt Lake City",
+    "San Diego",
+    "San Antonio",
+    "Columbus, OH",
+    "Kansas City",
+    "Hartford-New Haven",
+    "Austin",
+    "Cincinnati",
+    "Greenville-Spartanburg-Asheville-Anderson",
+    "Milwaukee",
+    "West Palm Beach-Fort Pierce",
+    "Las Vegas",
+    "Jacksonville",
+    "Grand Rapids-Kalamazoo-Battle Creek",
+    "Harrisburg-Lancaster-Lebanon-York",
+    "Norfolk-Portsmouth-Newport News",
+    "Birmingham-Anniston-Tuscaloosa",
+    "Oklahoma City",
+    "Greensboro-High Point-Winston Salem",
+    "Louisville",
+    "Albuquerque-Santa Fe",
+    "New Orleans"
   ];
   const handleDateChange = (date) => {
     setSelectedRange(date);
@@ -253,20 +278,20 @@ const Presentation = () => {
     setImageList(file.name);
     setFileSpecsSide(convertBytesToMB(file.size));
     setFileTypeSide(file.type);
-};
+  };
 
-const convertBytesToMB = (bytes) => {
+  const convertBytesToMB = (bytes) => {
     return (bytes / (1024 * 1024)).toFixed(2); // Convert bytes to megabytes with 2 decimal places
-};
+  };
 
   const handleImageUploadBack = (event) => {
-      const file = event.target.files[0];
-      setSelectedImageBack(file);
-      setImageList(file.name);
-      setFileSpecsBack(convertBytesToMB(file.size));
-      setFileTypeBack(file.type)
+    const file = event.target.files[0];
+    setSelectedImageBack(file);
+    setImageList(file.name);
+    setFileSpecsBack(convertBytesToMB(file.size));
+    setFileTypeBack(file.type)
 
-    };
+  };
 
 
   return (
@@ -295,7 +320,7 @@ const convertBytesToMB = (bytes) => {
         <div className="lg:flex block justify-between items-center p-4 w-[100%] max-w-[1280px] m-auto">
           <div>
             <div className="font-inter text-[#e4e4e6] lg:text-[100px] lg:tracking-[-11px] tracking-[0px] lg:leading-[96px] leading-[0px] font-[700]">
-              LED TRACK
+              LED TRUCK
             </div>
             <p className="lg:p-2 p-0 py-2 font-inter">
               Is a truck equipped <br />
@@ -317,7 +342,7 @@ const convertBytesToMB = (bytes) => {
                   fill-opacity="0.2"
                 />
               </svg>
-              <p>Vedio</p>
+              <p>Video</p>
             </div>
             <div className="flex flex-col justify-center items-center">
               <svg
@@ -407,21 +432,21 @@ const convertBytesToMB = (bytes) => {
               We work with
             </div>
             <div className="font-inter lg:text-[100px] text-[50px] leading-[40px] lg:leading-[96px] tracking-[0px] lg:tracking-[-9px] font-[500] mt-[20px] mb-[50px] w-[40%]">
-              different companies
+              premier brands
             </div>
             <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px]">
-              Have done advertising campaigns for industries such as:
+              We've done advertising campaigns for industries such as:
             </div>
             <div className="my-[20px]">
               <ul>
                 <li className="font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px]">
-                  Cannabis
+                  CPG
                 </li>
                 <li className="font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px]">
-                  Crypto & NFT
+                  Tech
                 </li>
                 <li className="font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px]">
-                  Political
+                  Politics
                 </li>
                 <li className="font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px]">
                   Sports
@@ -438,7 +463,7 @@ const convertBytesToMB = (bytes) => {
                 Since
               </div>
               <div className="font-inter font-[500] text-[28px] leading-[32px] tracking-[-0.8px]">
-                2004
+                2014
               </div>
             </div>
             <div>
@@ -518,7 +543,7 @@ const convertBytesToMB = (bytes) => {
                 starts at
               </div>
               <div className="font-inter font-[500] text-[22px] leading-[28px] tracking-[-0.55px] my-[5px]">
-                $1250
+                $1750
               </div>
               <div className="font-inter font-[400] text-[14px] leading-[20px] tracking-[-0.5px]">
                 per day
@@ -537,7 +562,7 @@ const convertBytesToMB = (bytes) => {
               <div className="font-inter font-[500] lg:text-[44px] text-[25px] leading-[44px] lg:tracking-[-2.65px] tracking-[0px] lg:py-[150px] py-[40px] text-center">
                 Test your ideas
               </div>
-             {isModalOpen ? "" : <div className="flex lg:flex-row flex-col w-[100%] gap-[40px] pb-[100px] justify-between">
+              {isModalOpen ? "" : <div className="flex lg:flex-row flex-col w-[100%] gap-[40px] pb-[100px] justify-between">
                 <div className="lg:w-[30%] w-[90%] ml-4">
                   <div className="bg-[#f9ff8a] rounded-full flex w-[100%] p-[2px]">
                     <button
@@ -584,70 +609,70 @@ const convertBytesToMB = (bytes) => {
                     </button>
                   </div>
                   {truckSide === "side" ?
-                  <div className="bg-[#fff] rounded-lg p-4 mt-[10px] ">
-                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Advertising size</div>
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">11.5x6.5’</div>
-                  </div>
-                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Available for</div>
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">Vedio/Image</div>
-                  </div>
-                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">File Formats</div>
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">{fileTypeSide ? fileTypeSide : "MP4/MOV/JPEG"}</div>
-                  </div>
-                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Min Resolution</div>
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">1280x720px</div>
-                  </div>
-                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Max File Size</div>
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">{fileSpecsSide ? fileSpecsSide+'mb' : "50mb"}</div>
-                  </div>
+                    <div className="bg-[#fff] rounded-lg p-4 mt-[10px] ">
+                      <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Screen</div>
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">11.5x6.5’</div>
+                      </div>
+                      <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Available for</div>
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">Video/Image</div>
+                      </div>
+                      <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">File Formats</div>
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">{fileTypeSide ? fileTypeSide : "MP4/MOV/JPEG"}</div>
+                      </div>
+                      <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Min Resolution</div>
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">1280x720px</div>
+                      </div>
+                      <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Max File Size</div>
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">{fileSpecsSide ? fileSpecsSide + 'mb' : "50mb"}</div>
+                      </div>
                     </div>
-                  : 
-                  <div className="bg-[#fff] rounded-lg p-4 mt-[10px] ">
-                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Advertising size</div>
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">11.5x6.5’</div>
-                  </div>
-                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Available for</div>
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">Vedio/Image</div>
-                  </div>
-                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">File Formats</div>
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">{fileTypeBack ? fileTypeBack : "MP4/MOV/JPEG"}</div>
-                  </div>
-                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Min Resolution</div>
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">1280x720px</div>
-                  </div>
-                  <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Max File Size</div>
-                  <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">{fileSpecsBack ? fileSpecsBack+"mb" : "50mb"}</div>
-                  </div>
+                    :
+                    <div className="bg-[#fff] rounded-lg p-4 mt-[10px] ">
+                      <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Screen</div>
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">11.5x6.5’</div>
+                      </div>
+                      <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Available for</div>
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">Video/Image</div>
+                      </div>
+                      <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">File Formats</div>
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">{fileTypeBack ? fileTypeBack : "MP4/MOV/JPEG"}</div>
+                      </div>
+                      <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Min Resolution</div>
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">1280x720px</div>
+                      </div>
+                      <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#9c9c9f]">Max File Size</div>
+                        <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">{fileSpecsBack ? fileSpecsBack + "mb" : "50mb"}</div>
+                      </div>
                     </div>}
                   <div className="w-[100%] mt-[10px] flex justify-center">
-                    {truckSide ==='side'?
-                    <input
-                      type="file"
-                      id="uploadfile"
-                      accept=".jpg, .jpeg, .png, .pdf"
-                      onChange={handleImageUploadSide}
-                      multiple
-                      style={{ display: "none" }} // Hide the default file input
-                    />
-                  :
-                  <input
-                      type="file"
-                      id="uploadfile"
-                      accept=".jpg, .jpeg, .png, .pdf"
-                      onChange={handleImageUploadBack}
-                      multiple
-                      style={{ display: "none" }} // Hide the default file input
-                    />}
+                    {truckSide === 'side' ?
+                      <input
+                        type="file"
+                        id="uploadfile"
+                        accept=".jpg, .jpeg, .png, .pdf"
+                        onChange={handleImageUploadSide}
+                        multiple
+                        style={{ display: "none" }} // Hide the default file input
+                      />
+                      :
+                      <input
+                        type="file"
+                        id="uploadfile"
+                        accept=".jpg, .jpeg, .png, .pdf"
+                        onChange={handleImageUploadBack}
+                        multiple
+                        style={{ display: "none" }} // Hide the default file input
+                      />}
                     <label
                       htmlFor="uploadfile"
                       className="w-[100%] py-[10px] px-4 text-[#fff] text-center font-inter bg-[#ff80fd] rounded-lg cursor-pointer"
@@ -694,7 +719,7 @@ const convertBytesToMB = (bytes) => {
                   )
                 ) : (
                   <div className="lg:w-[70%] w-[100%]">
-                   Under Process!
+                    Coming soon!
                   </div>
                 )}
               </div>}
@@ -732,29 +757,40 @@ const convertBytesToMB = (bytes) => {
             <Image src={Routesimage} />
           </div>
           <div className="lg:w-[50%] w-[100%] ">
-            {RoutesTravel.map((item) => (
-              <div className="flex  w-[100%]">
-                <li className="font-inter font-[400] w-[50%] text-[12px] leading-[16px] tracking-[0.05px] text-[#adadb0] ">
-                  {item.Route}
-                </li>
-                <li className="font-inter font-[400] w-[50%] text-[12px] leading-[16px] tracking-[0.05px] text-[#adadb0] ">
-                  {item.Route}
-                </li>
-              </div>
-            ))}
+            {
+              RoutesTravel.reduce((acc, item, index, originalArray) => {
+                // Pairing items, pushing array of two elements into accumulator
+                if (index % 2 === 0) {
+                  // Check to ensure not to push undefined for the last item if the original array has odd length
+                  acc.push(originalArray.slice(index, index + 2));
+                }
+                return acc;
+              }, []).map((pair, index) => (
+                <div key={index} className="flex w-[100%]">
+                  <li className="font-inter font-[400] w-[50%] text-[12px] leading-[16px] tracking-[0.05px] text-[#adadb0] ">
+                    {pair[0]} {/* This is the first item of the pair */}
+                  </li>
+                  {pair[1] && ( // Check if second item exists to avoid rendering undefined
+                    <li className="font-inter font-[400] w-[50%] text-[12px] leading-[16px] tracking-[0.05px] text-[#adadb0] ">
+                      {pair[1]} {/* This is the second item, if it exists */}
+                    </li>
+                  )}
+                </div>
+              ))
+            }
           </div>
         </div>
         <div className="mt-[30px] bg-[#e4e4e4]">
           <div className="m-auto w-[100%] max-w-[1280px] p-4">
             <div className="font-inter font-[500] text-[#fff] lg:text-[100px] text-[50px] lg:leading-[96px] leading-[45px] lg:tracking-[-9.65px] tracking-[0px] lg:w-[44%] w-[80%]">
-              If you have not found the city you are interested in
+              Don't see your city?
             </div>
             <div className="mt-[100px] mb-[50px] w-[50%] m-auto flex flex-col justify-center items-center">
               <input
                 type="text"
                 id="location"
                 name="location"
-                placeholder="Offer your location"
+                placeholder="your location"
                 onChange={handleInputChange}
                 className="placeholder:text-[#e4e4e4] placeholder:text-[14px] text-[14px] font-inter placeholder:font-inter bg-[#fff] border-none px-4 py-1 focus:outline-none rounded-lg"
               />
@@ -762,21 +798,20 @@ const convertBytesToMB = (bytes) => {
                 <p className="text-sm text-[red] mt-1">{errors.location}</p>
               )}
               <div className="lg:w-[50%] w-[100%] font-inter font-[400] text-center text-[#3C3C43] my-[20px] text-[14px] leading-[16px] tracking-[-0.5px]">
-                and we will try to organize an advertising campaign for you
-                there
+                We'll try to add coverage as soon as we can
               </div>
               <div>
                 <button
                   className="bg-[#FF80FD] rounded-lg text-[#fff] font-inter p-3 cursor-pointer hover:bg-[#e4e4e4] hover:text-[#FF80FD] hover:border-[1px] hover:border-[#FF80FD]"
                   onClick={handlelocationSubmit}
                 >
-                  Offer
+                  Submit
                 </button>
               </div>
             </div>
           </div>
         </div>
-         <div className="m-auto w-[100%] max-w-[1280px] p-4 flex lg:flex-row flex-col w-[100%] my-[50px] gap-[30px] lg:gap-[0px]">
+        <div className="m-auto w-[100%] max-w-[1280px] p-4 flex lg:flex-row flex-col w-[100%] my-[50px] gap-[30px] lg:gap-[0px]">
           <div className="lg:w-[33.33%] w-[100%]">
             <Image src={orderProcess} />
           </div>
@@ -809,30 +844,30 @@ const convertBytesToMB = (bytes) => {
             </div>
           </div>
           <div className="lg:w-[33.33%] w-[100%]">
-          <form>
+            <form>
               <div className="flex flex-col gap-[10px] mb-[10px]">
                 <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Name</label>
-                <input type="text" placeholder="Enter Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+                <input type="text" placeholder="Enter Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]" />
               </div>
               <div className="flex flex-col gap-[10px] mb-[10px]">
                 <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Last Name</label>
-                <input type="text" placeholder="Enter Last Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+                <input type="text" placeholder="Enter Last Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]" />
               </div>
               <div className="flex flex-col gap-[10px] mb-[10px]">
                 <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Email</label>
-                <input type="Email" placeholder="Enter Email" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+                <input type="Email" placeholder="Enter Email" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]" />
               </div>
               <div className="flex flex-col gap-[10px] mb-[10px]">
                 <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Phone</label>
-                <input type="number" placeholder="Enter Phone Number" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+                <input type="number" placeholder="Enter Phone Number" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]" />
               </div >
               <div className="flex flex-col gap-[10px] mb-[10px]">
                 <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Company</label>
-                <input type="text" placeholder="Your Company Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+                <input type="text" placeholder="Your Company Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]" />
               </div>
               <div className="flex flex-col gap-[10px] mb-[10px]">
                 <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Driver Notes</label>
-                <input type="text" placeholder="Enter Driver Notes" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"/>
+                <input type="text" placeholder="Enter Driver Notes" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]" />
               </div>
             </form>
           </div>
@@ -843,33 +878,33 @@ const convertBytesToMB = (bytes) => {
           </button>
         </div>
         <Modal
-  open={isModalOpen}
-  onOk={handleOk}
-  onCancel={handleCancel}
-  width="100vw" // Change width to 100vw
-  footer={null}
-  centered={true}
-  style={{
-    maxWidth: "1280px",
-    height: '100vh',
-    width: '100wh',
-    backgroundColor: "#e4e4e4",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    paddingBottom: "0px",
-    margin: "0px",
-    "@media (minWidth: 600px)": {
-      width: "80%", // or whatever width you want above 600px viewport width
-    },
-    "@media (minWidth: 900px)": {
-      width: "100%", // or whatever width you want above 900px viewport width
-    },
-  }}
-> 
-  <Invoice />
-</Modal>
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          width="100vw" // Change width to 100vw
+          footer={null}
+          centered={true}
+          style={{
+            maxWidth: "1280px",
+            height: '100vh',
+            width: '100wh',
+            backgroundColor: "#e4e4e4",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            paddingBottom: "0px",
+            margin: "0px",
+            "@media (minWidth: 600px)": {
+              width: "80%", // or whatever width you want above 600px viewport width
+            },
+            "@media (minWidth: 900px)": {
+              width: "100%", // or whatever width you want above 900px viewport width
+            },
+          }}
+        >
+          <Invoice />
+        </Modal>
 
       </div>
     </>

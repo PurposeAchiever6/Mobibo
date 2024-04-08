@@ -134,7 +134,7 @@ const User = ({onNextClick}) => {
                   type="text"
                   name="mobile"
                   id="mobile"
-                  placeholder="Where Did you want to show ads?"
+                  placeholder="Where do you want to show ads?"
                   autoComplete="given-name"
                   className="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-[#6366F1] sm:text-sm sm:leading-6"
                   onChange={handleInputChange} // Corrected onChange handler
@@ -150,7 +150,7 @@ const User = ({onNextClick}) => {
 
       <div className="flex justify-center p-4  w-full text-center next-btn  mt-5 m-auto">
         <div>
-        <p className="text-center m-auto font-inter tex-[24px]">To continue, enter the city</p>
+        <p className="text-center m-auto font-inter tex-[24px]">To continue, enter your city</p>
         <button className={formData.mobile.trim() ? "rounded-md bg-[#80FFAB] px-3 py-2 text-sm font-semibold text-[#000] shadow-sm hover:text-indigo-500 ml-auto mt-[10px]" : "rounded-md bg-[#f7f7f7] px-3 py-2 text-sm font-semibold text-[#d5d5d7] shadow-sm cursor-not-allowed ml-auto mt-[10px]"} onClick={handleSubmit}>
           Next <ArrowRightOutlined className="pt-[3px] pl-2" />
         </button>
