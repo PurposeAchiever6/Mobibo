@@ -18,12 +18,24 @@ import Calendar from "react-calendar";
 
 const Personalinfo = ({onNextClick,onPreviousClick}) => {
   const [selectedRange, setSelectedRange] = useState([]);
-
+  const [totalCost , setTotalCost] = useState(null)
+  const [totalDays , setTotalDays] = useState(null)
+  const [totalSaving, setTotalSaving] = useState(null)
   const nextClick =()=>{
     onNextClick();
   } 
   const handleDateChange = (date) => {
     setSelectedRange(date);
+    if (date.length === 2) {
+      const startDate = new Date(date[0]);
+      const endDate = new Date(date[1]);
+      const diffInTime = endDate.getTime() - startDate.getTime();
+      const diffInDays = Math.ceil(diffInTime / (1000 * 60 * 60 * 24));
+      const selectedDays = diffInDays;
+      setTotalDays(selectedDays)
+      setTotalCost(selectedDays * 1750);
+      setTotalSaving(selectedDays * 2400);
+    }
   };
  
     return (
@@ -42,10 +54,10 @@ const Personalinfo = ({onNextClick,onPreviousClick}) => {
               />
               <div className="flex justify-between bg-[#f9ff8a] px-3 py-2">
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px]">
-                  Price for 9 days
+                  Price for {totalDays ? totalDays : "0"} days
                 </div>
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px]">
-                  {selectedRange.length === 0 ? "Select Date" : "$173088.99"}
+                  {totalCost? ("$" + new Intl.NumberFormat('en-US').format(totalCost)) : "$0"}
                 </div>
               </div>
               <div className="flex justify-between  px-3 py-2">
@@ -53,7 +65,7 @@ const Personalinfo = ({onNextClick,onPreviousClick}) => {
                   Savings
                 </div>
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]">
-                {selectedRange.length === 0 ? "Select Date" : "$2044.99"}
+                {totalSaving? ("$" + new Intl.NumberFormat('en-US').format(totalSaving)) : "$0"}
                 </div>
               </div>
             </div>
