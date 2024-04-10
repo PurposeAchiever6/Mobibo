@@ -212,7 +212,7 @@ const Presentation = () => {
       companyImage: companyImage14,
     },
     {
-      companyName: "T-mobile",
+      companyName: "T-Mobile",
       companyImage: companyImage15,
     },
     {
@@ -725,7 +725,7 @@ const Presentation = () => {
                             File Formats
                           </div>
                           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">
-                            {fileTypeSide ? fileTypeSide : "MP4/MOV/JPEG"}
+                            MP4/MOV/JPEG
                           </div>
                         </div>
                         <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
@@ -768,7 +768,7 @@ const Presentation = () => {
                             File Formats
                           </div>
                           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">
-                            {fileTypeBack ? fileTypeBack : "JPEG/PNG"}
+                            JPEG/PNG
                           </div>
                         </div>
                         <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">

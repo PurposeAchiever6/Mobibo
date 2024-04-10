@@ -134,7 +134,7 @@ const User = ({onNextClick}) => {
                   type="text"
                   name="mobile"
                   id="mobile"
-                  placeholder="Where do you want to show ads?"
+                  placeholder="What city do you want to advertise in?"
                   autoComplete="given-name"
                   className="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-[#6366F1] sm:text-sm sm:leading-6"
                   onChange={handleInputChange} // Corrected onChange handler

@@ -204,7 +204,7 @@ const page = () => {
       companyImage: companyImage14,
     },
     {
-      companyName: "T-mobile",
+      companyName: "T-Mobile",
       companyImage: companyImage15,
     },
     {
