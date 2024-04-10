@@ -14,7 +14,9 @@
   background-repeat: no-repeat;
 }
 .gaming-console{
-  background-image: url(../Assests/GamingConsoleImage.png);
+  background-image: url(../Assests/GamingConsoleImage.jpeg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .tab-buttons{
@@ -372,7 +374,7 @@
 }
 .truckShow-bg-side{
   background-image: url(../Assests/truck-archi.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat
 }
 .modal-bg-back{
@@ -386,6 +388,14 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+.ant-select-focused:where(.css-dev-only-do-not-override-1km2u5u).ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector{
+  outline:none !important;
+  border:none !important;
+  box-shadow:none !important;
+}
+:where(.css-dev-only-do-not-override-1km2u5u).ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector{
+  border:none !important;
 }
 
 @media screen and (max-width:580px) {

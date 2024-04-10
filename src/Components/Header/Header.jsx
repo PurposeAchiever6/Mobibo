@@ -28,15 +28,40 @@ const Header = () => {
     } else if (value === "Experience") {
       window.scrollTo({ behavior: "smooth", top: 1670 });
     } else if (value === "Pricing") {
-      window.scrollTo({ behavior: "smooth", top: 3540 });
+      window.scrollTo({ behavior: "smooth", top: 2540 });
     } else if (value === "Trucks") {
-      window.scrollTo({ behavior: "smooth", top: 4040 });
+      window.scrollTo({ behavior: "smooth", top: 3040 });
     } else if (value === "AdsSettings") {
-      window.scrollTo({ behavior: "smooth", top: 5315 });
+      window.scrollTo({ behavior: "smooth", top: 4315 });
     } else if (value === "Coverage") {
-      window.scrollTo({ behavior: "smooth", top: 8115 });
+      window.scrollTo({ behavior: "smooth", top: 7315 });
     } else if (value === "OrderProcess") {
-      window.scrollTo({ behavior: "smooth", top: 10615 });
+      window.scrollTo({ behavior: "smooth", top: 9815 });
+    }
+  };
+
+  const handleScrollResp = (value) => {
+    if (value === "Feature") {
+      window.scrollTo({ behavior: "smooth", top: 290 });
+      setIsOpen(false);
+    } else if (value === "Experience") {
+      window.scrollTo({ behavior: "smooth", top: 1000 });
+      setIsOpen(false);
+    } else if (value === "Pricing") {
+      window.scrollTo({ behavior: "smooth", top: 1800 });
+      setIsOpen(false);
+    } else if (value === "Trucks") {
+      window.scrollTo({ behavior: "smooth", top: 2200 });
+      setIsOpen(false);
+    } else if (value === "AdsSettings") {
+      window.scrollTo({ behavior: "smooth", top: 8065 });
+      setIsOpen(false);
+    } else if (value === "Coverage") {
+      window.scrollTo({ behavior: "smooth", top: 10185 });
+      setIsOpen(false);
+    } else if (value === "OrderProcess") {
+      window.scrollTo({ behavior: "smooth", top: 13400 });
+      setIsOpen(false);
     }
   };
  
@@ -87,57 +112,58 @@ const Header = () => {
                   Blog
                 </Link>
               </div>
-              <div className="navlinks-mobile">
-                <li
-                  className=""
-                  value="Feature"
-                  onClick={() => handleScroll("Feature")}
-                >
-                  Features
-                </li>
-                <li
-                  className=""
-                  value="Experience"
-                  onClick={() => handleScroll("Experience")}
-                >
-                  Experience
-                </li>
-                <li
-                  className=""
-                  value="Pricing"
-                  onClick={() => handleScroll("Pricing")}
-                >
-                  Pricing
-                </li>
-                <li
-                  className=""
-                  value="Trucks"
-                  onClick={() => handleScroll("Trucks")}
-                >
-                  Trucks
-                </li>
-                <li
-                  className=""
-                  value="AdsSettings"
-                  onClick={() => handleScroll("AdsSettings")}
-                >
-                  Ads Settings
-                </li>
-                <li
-                  className=""
-                  value="Coverage"
-                  onClick={() => handleScroll("Coverage")}
-                >
-                  Coverage
-                </li>
-                <li
-                  className=""
-                  value="OrderProcess"
-                  onClick={() => handleScroll("OrderProcess")}
-                >
-                  Order Process
-                </li>
-              </div>
+              {currentRoute === "/" ?
+          <div className="navlinks-mobile">
+            <li
+              className=""
+              value="Feature"
+              onClick={() => handleScrollResp("Feature")}
+            >
+              Features
+            </li>
+            <li
+              className=""
+              value="Experience"
+              onClick={() => handleScrollResp("Experience")}
+            >
+              Experience
+            </li>
+            <li
+              className=""
+              value="Pricing"
+              onClick={() => handleScrollResp("Pricing")}
+            >
+              Pricing
+            </li>
+            <li
+              className=""
+              value="Trucks"
+              onClick={() => handleScrollResp("Trucks")}
+            >
+              Trucks
+            </li>
+            <li
+              className=""
+              value="AdsSettings"
+              onClick={() => handleScrollResp("AdsSettings")}
+            >
+              Ads Settings
+            </li>
+            <li
+              className=""
+              value="Coverage"
+              onClick={() => handleScrollResp("Coverage")}
+            >
+              Coverage
+            </li>
+            <li
+              className=""
+              value="OrderProcess"
+              onClick={() => handleScrollResp("OrderProcess")}
+            >
+              Order Process
+            </li>
+          </div> : '' }
             </div>
           )}
           <div className="tab-buttons">
@@ -174,7 +200,8 @@ const Header = () => {
                   Blog
                 </Link>
           </div>
-          {currentRoute === "/" ?<div className="navlinks">
+          {currentRoute === "/" ?
+          <div className="navlinks">
             <li
               className=""
               value="Feature"

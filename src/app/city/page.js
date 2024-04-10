@@ -10,50 +10,53 @@ import CompanyCard from "@/Components/CompanyCard/companyCard.jsx";
 import Calendar from "react-calendar";
 import dreamTruck from "@/Assests/dream-truck.png";
 import truckArch from "@/Assests/truck-archi.png";
-import companyImage1 from "@/Assests/companyImage.png";
-import companyImage2 from "@/Assests/companyImage2.png";
-import companyImage3 from "@/Assests/companyImage3.png";
-import companyImage4 from "@/Assests/companyImage4.png";
-import companyImage5 from "@/Assests/companyImage5.png";
-import companyImage6 from "@/Assests/companyImage6.png";
-import companyImage8 from "@/Assests/companyImage8.png";
-import companyImage9 from "@/Assests/companyImage9.png";
-import companyImage10 from "@/Assests/companyImage10.png";
-import companyImage11 from "@/Assests/companyImage11.png";
-import companyImage12 from "@/Assests/companyImage12.png";
-import companyImage13 from "@/Assests/companyImage13.png";
-import companyImage14 from "@/Assests/companyImage14.png";
-import companyImage15 from "@/Assests/companyImage15.png";
-import companyImage16 from "@/Assests/companyImage16.png";
-import companyImage17 from "@/Assests/companyImage17.png";
+import companyImage1 from "@/Assests/companyImage.jpeg";
+import companyImage2 from "@/Assests/companyImage2.jpeg";
+import companyImage3 from "@/Assests/companyImage3.jpeg";
+import companyImage4 from "@/Assests/companyImage4.jpeg";
+import companyImage5 from "@/Assests/companyImage5.jpeg";
+import companyImage7 from "@/Assests/companyImage7.png";
+import companyImage6 from "@/Assests/companyImage6.jpeg";
+import companyImage8 from "@/Assests/companyImage8.jpg";
+import companyImage9 from "@/Assests/companyImage9.jpeg";
+import companyImage10 from "@/Assests/companyImage10.jpeg";
+import companyImage11 from "@/Assests/companyImage11.jpeg";
+import companyImage12 from "@/Assests/companyImage12.jpeg";
+import companyImage13 from "@/Assests/companyImage13.jpeg";
+import companyImage14 from "@/Assests/companyImage14.jpeg";
+import companyImage15 from "@/Assests/companyImage15.jpeg";
+import companyImage16 from "@/Assests/companyImage16.jpeg";
 import orderProcess from "@/Assests/order-process.svg";
 import populationicon from "@/Assests/population-icon.svg";
 import AdCampain from "@/Components/AdCampain/AdCampain";
 import AllCompainRoutes from "@/Components/AllCompainRoutes/AllCompainRoutes";
 import responsiveTruck from "@/Assests/responsiveTruck.png";
-import axios from 'axios';
-import emailjs from '@emailjs/browser';
-import { orderJson } from "@/app/api/utils/json.mjs"
+import axios from "axios";
+import emailjs from "@emailjs/browser";
+import { orderJson } from "@/app/api/utils/json.mjs";
 import dotenv from "dotenv";
 import Invoice from "@/Components/user/UserMain.jsx";
 import { Modal } from "antd";
 import Demography from "./Demography";
 
-dotenv.config()
+dotenv.config();
 
 const page = () => {
   const [selectedRange, setSelectedRange] = useState([new Date(), new Date()]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageList, setImageList] = useState([]);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [company, setCompany] = useState('');
-  const [driverNotes, setDriverNotes] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [driverNotes, setDriverNotes] = useState("");
   const [truckSide, setTruckSide] = useState("side");
   const [viewType, setViewType] = useState("2d");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [totalCost , setTotalCost] = useState(null)
+  const [totalDays , setTotalDays] = useState(null)
+  const [totalSaving, setTotalSaving] = useState(null)
   const [formData, setFormData] = useState({
     location: "",
   });
@@ -67,7 +70,7 @@ const page = () => {
       ...formData,
       [name]: value,
     });
-    if (value.trim() === '') {
+    if (value.trim() === "") {
       setErrors({
         ...errors,
         [name]: `${name.charAt(0).toUpperCase() + name.slice(1)} is required`,
@@ -78,19 +81,17 @@ const page = () => {
         [name]: undefined,
       });
 
-      if (name === 'email') {
+      if (name === "email") {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
           setErrors({
             ...errors,
-            [name]: 'Invalid email format',
+            [name]: "Invalid email format",
           });
         }
       }
     }
   };
-
-
 
   const handlelocationSubmit = () => {
     const newErrors = {};
@@ -101,11 +102,9 @@ const page = () => {
     if (Object.keys(newErrors).length === 0) {
       console.log("No validation errors, calling onNextClick");
       showModal();
-    }
-    else {
+    } else {
       console.log("Validation errors found, not calling onNextClick");
       setErrors(newErrors);
-
     }
   };
 
@@ -121,84 +120,99 @@ const page = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    var templateParams = await orderJson(firstName, lastName, email, phone, company, driverNotes);
-    axios.post('/api/order', await orderJson(firstName, lastName, email, phone, company, driverNotes));
-    console.log(process.env.NEXT_PUBLIC_SERVICE_ID)
+    var templateParams = await orderJson(
+      firstName,
+      lastName,
+      email,
+      phone,
+      company,
+      driverNotes
+    );
+    axios.post(
+      "/api/order",
+      await orderJson(firstName, lastName, email, phone, company, driverNotes)
+    );
+    console.log(process.env.NEXT_PUBLIC_SERVICE_ID);
     emailjs
-      .send(process.env.NEXT_PUBLIC_SERVICE_ID, process.env.NEXT_PUBLIC_TEMPLATE_ID, templateParams, process.env.NEXT_PUBLIC_PUBLIC_KEY)
+      .send(
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID,
+        templateParams,
+        process.env.NEXT_PUBLIC_PUBLIC_KEY
+      )
       .then(
         () => {
-          console.log('Email sending SUCCESS!');
+          console.log("Email sending SUCCESS!");
         },
         (error) => {
-          console.log('Email sending FAILED...', error);
-        },
+          console.log("Email sending FAILED...", error);
+        }
       );
   }
   const companyData = [
     {
-      companyName: "company Name1",
+      companyName: "Airbnb",
       companyImage: companyImage1,
     },
     {
-      companyName: "company Name2",
+      companyName: "Deep Instinct",
       companyImage: companyImage2,
     },
     {
-      companyName: "company Name3",
-      companyImage: companyImage3,
-    },
-    {
-      companyName: "company Name4",
+      companyName: "Hello Kitty",
       companyImage: companyImage4,
     },
     {
-      companyName: "company Name5",
+      companyName: "Growler",
+      companyImage: companyImage3,
+    },
+    {
+      companyName: "LAN",
       companyImage: companyImage5,
     },
     {
-      companyName: "company Name6",
+      companyName: "Miami Dolphins",
       companyImage: companyImage6,
     },
     {
-      companyName: "company Name8",
+      companyName: "Mr Kelvin",
       companyImage: companyImage8,
     },
     {
-      companyName: "company Name9",
+      companyName: "OOH Insider",
       companyImage: companyImage9,
     },
     {
-      companyName: "company Name10",
+      companyName: "Red Bike",
       companyImage: companyImage10,
     },
     {
-      companyName: "company Name11",
+      companyName: "Round Table",
       companyImage: companyImage11,
     },
     {
-      companyName: "company Name12",
+      companyName: "Royal Racer",
       companyImage: companyImage12,
     },
     {
-      companyName: "company Name13",
+      companyName: "Scott Sherman",
       companyImage: companyImage13,
     },
     {
-      companyName: "company Name14",
+      companyName: "Monster",
       companyImage: companyImage14,
     },
     {
-      companyName: "company Name15",
+      companyName: "T-mobile",
       companyImage: companyImage15,
     },
     {
-      companyName: "company Name16",
+      companyName: "Villain Arts",
       companyImage: companyImage16,
     },
     {
-      companyName: "company Name17",
-      companyImage: companyImage17,
+      companyName: "Shiba",
+      companyImage: companyImage7,
     },
   ];
   const RoutesTravel = [
@@ -255,6 +269,17 @@ const page = () => {
   ];
   const handleDateChange = (date) => {
     setSelectedRange(date);
+  
+    if (date.length === 2) {
+      const startDate = new Date(date[0]);
+      const endDate = new Date(date[1]);
+      const diffInTime = endDate.getTime() - startDate.getTime();
+      const diffInDays = Math.ceil(diffInTime / (1000 * 60 * 60 * 24));
+      const selectedDays = diffInDays;
+      setTotalDays(selectedDays)
+      setTotalCost(selectedDays * 1750);
+      setTotalSaving(selectedDays * 650);
+    }
   };
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -280,8 +305,10 @@ const page = () => {
             style={{ position: "absolute", top: "10px", left: "10px" }}
           >
             <div className="w-[100%] max-w-[1280px] m-auto">
-              LED Truck<br />
-              Advertising<br />
+              LED Truck
+              <br />
+              Advertising
+              <br />
               in Boston <br />
             </div>
           </div>
@@ -304,10 +331,10 @@ const page = () => {
               />
               <div className="flex justify-between bg-[#f9ff8a] px-3 py-2">
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px]">
-                  Price for 9 days
+                  Price for {totalDays ? totalDays : "0"} days
                 </div>
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px]">
-                  $173088.99
+                  {totalCost? ("$" + new Intl.NumberFormat('en-US').format(totalCost)) : "$0"}
                 </div>
               </div>
               <div className="flex justify-between  px-3 py-2">
@@ -315,12 +342,15 @@ const page = () => {
                   Savings
                 </div>
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]">
-                  $2400.99
+                {totalSaving? ("$" + new Intl.NumberFormat('en-US').format(totalSaving)) : "$0"}
                 </div>
               </div>
             </div>
             <div className="lg:w-[20%] w-[80%] m-auto rounded-lg my-[10px]">
-              <button className="bg-[#80ffab] w-[100%] py-2 rounded-lg cursor-pointer" onClick={showModal}>
+              <button
+                className="bg-[#80ffab] w-[100%] py-2 rounded-lg cursor-pointer"
+                onClick={showModal}
+              >
                 Order
               </button>
             </div>
@@ -361,9 +391,15 @@ const page = () => {
           </div>
           <div className="my-[40px] mt-[100px]">Boston Population</div>
           <div className="w-full h-full flex justify-center items-center gap-[5px] flex-col my-[60px]">
-            <div><Image src={populationicon} /></div>
-            <div className="font-inter font-[500] text-[44px] leading-[44px] tracking-[-2.65px]">650,706</div>
-            <div className="font-inter font-[400] text-[20px] leading-[24px] tracking-[-0.55px]">people</div>
+            <div>
+              <Image src={populationicon} />
+            </div>
+            <div className="font-inter font-[500] text-[44px] leading-[44px] tracking-[-2.65px]">
+              650,706
+            </div>
+            <div className="font-inter font-[400] text-[20px] leading-[24px] tracking-[-0.55px]">
+              people
+            </div>
           </div>
         </div>
         <div className="p-4 flex w-[100%] w-[100%] max-w-[1280px] m-auto">
@@ -444,13 +480,7 @@ const page = () => {
           <div className="lg:w-[33.33%] w-[100%]">
             <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">
               1. &nbsp;Application for advertising placement
-              <div>
-                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Specify the city</p>
-                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Specify the dates</p>
-                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Attach your advertising materials</p>
-                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Provide personal information</p>
-                <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px] my-[10px] flex items-center gap-[5px]"><button type="button" className="cursor-pointer bg-[#FF80FD] text-[#fff] px-4 rounded-lg py-1 hover:border-[1px] hover:border-[#FF80FD] hover:bg-[#fff] hover:text-[#FF80FD]"> Can be Skipped for now </button></div>
-              </div>
+
             </div>
             <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] my-[100px]">
               <p>
@@ -459,46 +489,36 @@ const page = () => {
               <span className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">
                 Who will contact you.
               </span>
-              <div>
-                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Creatives</p>
-                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Route optimization</p>
-                <p className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C43] ml-[20px]">Measurement</p>
-              </div>
             </div>
             <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">
               3. &nbsp;Payment
             </div>
           </div>
           <div className="lg:w-[33.33%] w-[100%]">
-            <form>
-              <div className="flex flex-col gap-[10px] mb-[10px]">
-                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Name</label>
-                <input type="text" placeholder="Enter Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]" />
-              </div>
-              <div className="flex flex-col gap-[10px] mb-[10px]">
-                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Last Name</label>
-                <input type="text" placeholder="Enter Last Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]" />
-              </div>
-              <div className="flex flex-col gap-[10px] mb-[10px]">
-                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Email</label>
-                <input type="Email" placeholder="Enter Email" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]" />
-              </div>
-              <div className="flex flex-col gap-[10px] mb-[10px]">
-                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Phone</label>
-                <input type="number" placeholder="Enter Phone Number" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]" />
-              </div >
-              <div className="flex flex-col gap-[10px] mb-[10px]">
-                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Company</label>
-                <input type="text" placeholder="Your Company Name" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]" />
-              </div>
-              <div className="flex flex-col gap-[10px] mb-[10px]">
-                <label className="font-inter text-[16px] leading-[20px] tracking-[-0.5px] font-[500]">Driver Notes</label>
-                <input type="text" placeholder="Enter Driver Notes" className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]" />
-              </div>
-            </form>
+          <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Specify the city</div>
+           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Specify the dates</div>
+           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Attach your advertising materials</div>
+           <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C4399] text-right">сan be skipped and sent after payment</div>
+           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Provide personal information</div>
+           <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C4399] text-right">
+            <p>First Name</p>
+            <p>Last name</p>
+            <p>Email</p>
+            <p>Phone</p>
+            <p>Company name</p>
+            <p>Notes to LED truck driver</p>
+           </div>
+           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Creatives</div>
+           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Route optimization</div>
+           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Measurement</div>
+           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#3C3C4399]">Etc</div>
           </div>
         </div>
-        <div className="m-auto w-[100%] max-w-[1280px] p-4 flex justify-center"><button className="bg-[#80FFAB] px-4 py-2 cursor-pointer rounded-lg font-inter font-[500] hover:border-[1px] hover:bg-[#fff] hover:border-[#80FFAB] hover:text-[#80FFAB]">Run Ads</button></div>
+        <div className="m-auto w-[100%] max-w-[1280px] p-4 flex justify-center">
+          <button className="bg-[#80FFAB] px-4 py-2 cursor-pointer rounded-lg font-inter font-[500] hover:border-[1px] hover:bg-[#fff] hover:border-[#80FFAB] hover:text-[#80FFAB]">
+            Run Ads
+          </button>
+        </div>
         <Modal
           open={isModalOpen}
           onOk={handleOk}
@@ -507,7 +527,7 @@ const page = () => {
           footer={null}
           style={{
             maxWidth: "1280px",
-            height: '100vh',
+            height: "100vh",
             backgroundColor: "#e4e4e4",
             top: 0,
             left: 0,
