@@ -15,7 +15,7 @@ import "./invoice.module.css";
 
 import { Checkbox, Divider, Select } from "antd";
 
-const User = ({onNextClick}) => {
+const User = ({ onNextClick }) => {
   const [selectedCity, setSelectedCity] = useState("Lahore");
   const [selectedCountry, setSelectedCountry] = useState("Pakistan");
 
@@ -34,15 +34,15 @@ const User = ({onNextClick}) => {
   });
 
   const [errors, setErrors] = useState({});
-  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-  
+
     setFormData({
       ...formData,
       [name]: value,
     });
-  
+
     if (value.trim() === '') {
       setErrors({
         ...errors,
@@ -53,7 +53,7 @@ const User = ({onNextClick}) => {
         ...errors,
         [name]: undefined,
       });
-  
+
       if (name === 'email') {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
@@ -65,13 +65,13 @@ const User = ({onNextClick}) => {
       }
     }
   };
-  console.log("formData",formData)
+  console.log("formData", formData)
   const handleSubmit = () => {
     const newErrors = {};
 
     // if (!formData.firstName.trim()) {
     //   newErrors.firstName = "First name is required";
-      
+
     // }
 
     // if (!formData.lastName.trim()) {
@@ -107,7 +107,7 @@ const User = ({onNextClick}) => {
     // if (!formData.postCode.trim()) {
     //   newErrors.postCode = "Please enter the postcode";
     // }
-    
+
     if (Object.keys(newErrors).length === 0) {
       console.log("No validation errors, calling onNextClick");
       onNextClick();
@@ -118,11 +118,11 @@ const User = ({onNextClick}) => {
   };
 
   const isValidEmail = (email) => {
-   
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
-  
+
   return (
     <>
       <div>
@@ -150,10 +150,16 @@ const User = ({onNextClick}) => {
 
       <div className="flex justify-center p-4  w-full text-center next-btn  mt-5 m-auto">
         <div>
-        <p className="text-center m-auto font-inter tex-[24px]">To continue, enter your city</p>
-        <button className={formData.mobile.trim() ? "rounded-md bg-[#80FFAB] px-3 py-2 text-sm font-semibold text-[#000] shadow-sm hover:text-indigo-500 ml-auto mt-[10px]" : "rounded-md bg-[#f7f7f7] px-3 py-2 text-sm font-semibold text-[#d5d5d7] shadow-sm cursor-not-allowed ml-auto mt-[10px]"} onClick={handleSubmit}>
-          Next <ArrowRightOutlined className="pt-[3px] pl-2" />
-        </button>
+          <button className={formData.mobile.trim() ? "rounded-md bg-[#80FFAB] px-3 py-2 text-sm font-semibold text-[#000] shadow-sm hover:text-indigo-500 ml-auto mt-[10px]" : "rounded-md bg-[#f7f7f7] px-3 py-2 text-sm font-semibold text-[#d5d5d7] shadow-sm cursor-not-allowed ml-auto mt-[10px]"} onClick={handleSubmit}>
+            Next <ArrowRightOutlined className="pt-[3px] pl-2" />
+          </button>
+          <br/><br/>
+          <strong>
+          <p className="text-center m-auto font-inter tex-[24px]">
+            Don’t see your city?&nbsp;
+            <a href="mailto:joe@heymobibo.com">Contact us</a>
+          </p>
+          </strong>
         </div>
       </div>
     </>

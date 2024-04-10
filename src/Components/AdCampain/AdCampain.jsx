@@ -29,10 +29,10 @@ const AdCampain = () => {
       </div>
       <div className="main-h-adCampain">
         <h2 className="heading-campain">
-          Pick a place <br />
-          where your target audience <br /> congregates <br />
-          and show them <br />
-          the ads
+           
+         Maximize visibility <br />
+         in high traffic areas <br /> your target <br />
+         audience congregates
         </h2>
       </div>
     </div>
