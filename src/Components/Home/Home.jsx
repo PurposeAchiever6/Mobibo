@@ -15,14 +15,14 @@ import companyImage2 from "@/Assests/companyImage2.jpeg";
 import companyImage3 from "@/Assests/companyImage3.jpeg";
 import companyImage4 from "@/Assests/companyImage4.jpeg";
 import companyImage5 from "@/Assests/companyImage5.jpeg";
-import companyImage7 from "@/Assests/companyImage7.png";
+import companyImage7 from "@/Assests/companyImage7.jpeg";
 import companyImage6 from "@/Assests/companyImage6.jpeg";
-import companyImage8 from "@/Assests/companyImage8.jpg";
+import companyImage8 from "@/Assests/companyImage8.jpeg";
 import companyImage9 from "@/Assests/companyImage9.jpeg";
 import companyImage10 from "@/Assests/companyImage10.jpeg";
 import companyImage11 from "@/Assests/companyImage11.jpeg";
 import companyImage12 from "@/Assests/companyImage12.jpeg";
-import companyImage13 from "@/Assests/companyImage13.jpeg";
+import companyImage13 from "@/Assests/companyImage13.png";
 import companyImage14 from "@/Assests/companyImage14.jpeg";
 import companyImage15 from "@/Assests/companyImage15.jpeg";
 import companyImage16 from "@/Assests/companyImage16.jpeg";
@@ -64,6 +64,7 @@ const Presentation = () => {
   const [totalCost, setTotalCost] = useState(null);
   const [totalDays, setTotalDays] = useState(null);
   const [totalSaving, setTotalSaving] = useState(null);
+  const [isHovered, setIsHovered] = useState(false); // State to manage hover status
 
   const [formData, setFormData] = useState({
     location: "",
@@ -183,7 +184,7 @@ const Presentation = () => {
       companyImage: companyImage6,
     },
     {
-      companyName: "Mr Kelvin",
+      companyName: "CannabCo",
       companyImage: companyImage8,
     },
     {
@@ -203,7 +204,7 @@ const Presentation = () => {
       companyImage: companyImage12,
     },
     {
-      companyName: "Scott Sherman",
+      companyName: "NUGL",
       companyImage: companyImage13,
     },
     {
@@ -298,6 +299,7 @@ const Presentation = () => {
 
   const handleImageUploadSide = (event) => {
     const file = event.target.files[0];
+    console.log("file.type: ", file.type)
     setSelectedImageSide(file);
     setImageList(file.name);
     setFileSpecsSide(convertBytesToMB(file.size));
@@ -507,7 +509,7 @@ const Presentation = () => {
               We work with
             </div>
             <div className="font-inter lg:text-[100px] text-[50px] leading-[40px] lg:leading-[96px] tracking-[0px] lg:tracking-[-9px] font-[500] mt-[20px] mb-[50px] w-[40%]">
-              premier brands
+              top-tier brands
             </div>
             <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px]">
               We've done advertising campaigns for industries such as:
@@ -599,13 +601,22 @@ const Presentation = () => {
                 </div>
               </div>
               <div className="flex justify-between  px-3 py-2">
-                <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]">
+                <div
+                  className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                >
                   Savings
+                  {
+                    isHovered && (
+                      <div className="font-[400] text-[10px]">
+                        *Based on a market rate of $2400
+                      </div>
+                    )
+                  }
                 </div>
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]">
-                  {totalSaving
-                    ? "$" + new Intl.NumberFormat("en-US").format(totalSaving)
-                    : "$650"}
+                  {totalSaving ? ("$" + new Intl.NumberFormat('en-US').format(totalSaving)) : "$650"}
                 </div>
               </div>
             </div>
@@ -627,9 +638,6 @@ const Presentation = () => {
               </div>
               <div className="font-inter font-[400] text-[14px] leading-[20px] tracking-[-0.5px]">
                 per day
-              </div>
-              <div className="font-inter font-[400] text-[14px] leading-[20px] tracking-[-0.5px]">
-                *Savings are based on a market rate of $2400
               </div>
             </div>
           </div>
@@ -701,7 +709,7 @@ const Presentation = () => {
                             Screen
                           </div>
                           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">
-                            11.5x6.5’
+                            11.5’x6.5’
                           </div>
                         </div>
                         <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
@@ -744,7 +752,7 @@ const Presentation = () => {
                             Screen
                           </div>
                           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">
-                            11.5x6.5’
+                            6.5’x6.5’
                           </div>
                         </div>
                         <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
@@ -752,7 +760,7 @@ const Presentation = () => {
                             Available for
                           </div>
                           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">
-                            Video/Image
+                            Image
                           </div>
                         </div>
                         <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
@@ -760,7 +768,7 @@ const Presentation = () => {
                             File Formats
                           </div>
                           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">
-                            {fileTypeBack ? fileTypeBack : "MP4/MOV/JPEG"}
+                            {fileTypeBack ? fileTypeBack : "JPEG/PNG"}
                           </div>
                         </div>
                         <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
@@ -768,7 +776,7 @@ const Presentation = () => {
                             Min Resolution
                           </div>
                           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">
-                            1280x720px
+                            720x720px
                           </div>
                         </div>
                         <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
@@ -786,7 +794,7 @@ const Presentation = () => {
                         <input
                           type="file"
                           id="uploadfile"
-                          accept=".jpg, .jpeg, .png, .pdf"
+                          accept=".mp4, .mov, .jpeg"
                           onChange={handleImageUploadSide}
                           multiple
                           style={{ display: "none" }} // Hide the default file input
@@ -795,7 +803,7 @@ const Presentation = () => {
                         <input
                           type="file"
                           id="uploadfile"
-                          accept=".jpg, .jpeg, .png, .pdf"
+                          accept=".jpeg, .png"
                           onChange={handleImageUploadBack}
                           multiple
                           style={{ display: "none" }} // Hide the default file input
@@ -822,14 +830,27 @@ const Presentation = () => {
                     truckSide === "side" ? (
                       <div className="lg:w-[70%] w-[100%]  modal-bg-side p-4 lg:px-[55px] px-[25px] lg:h-[412px] h-[198px] ">
                         {selectedImageSide && ( // Display image preview if an image is selected
-                          <img
-                            src={URL.createObjectURL(selectedImageSide)}
-                            alt="Selected"
-                            width={300}
-                            height={100}
-                            className="lg:h-[268px] h-[124px] lg:w-[477px] w-[222px] mt-[-10px] lg:mt-[2px] lg:ml-[6px]"
-                            style={{ borderTopRightRadius: "13px" }}
-                          />
+                          fileTypeSide.startsWith("image") ? (
+                            <img
+                              src={URL.createObjectURL(selectedImageSide)}
+                              alt="Selected"
+                              width="300" // Moved inside quotation marks for consistency
+                              height="100"
+                              className="lg:h-[268px] h-[124px] lg:w-[477px] w-[222px] mt-[-10px] lg:mt-[2px] lg:ml-[6px]"
+                              style={{ borderTopRightRadius: "13px" }}
+                            />
+                          ) : (
+                            <video
+                              src={URL.createObjectURL(selectedImageSide)}
+                              width="300" // Moved inside quotation marks for consistency
+                              height="100"
+                              className="lg:h-[268px] h-[124px] lg:w-[477px] w-[222px] mt-[-10px] lg:mt-[2px] lg:ml-[6px]"
+                              style={{ borderTopRightRadius: "13px" }}
+                              controls
+                              autoPlay // This makes the video start automatically
+                              muted // This is often needed for autoplay to work due to browser policies
+                            />
+                          )
                         )}
                       </div>
                     ) : (

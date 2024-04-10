@@ -21,6 +21,7 @@ const Personalinfo = ({ onNextClick, onPreviousClick }) => {
   const [totalCost, setTotalCost] = useState(null)
   const [totalDays, setTotalDays] = useState(null)
   const [totalSaving, setTotalSaving] = useState(null)
+  const [isHovered, setIsHovered] = useState(false); // State to manage hover status
   const nextClick = () => {
     onNextClick();
   }
@@ -68,8 +69,19 @@ const Personalinfo = ({ onNextClick, onPreviousClick }) => {
           </div>
         </div>
         <div className="flex justify-between  px-3 py-2">
-          <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]">
+          <div
+            className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             Savings
+            {
+              isHovered && (
+                <div className="font-[400] text-[10px]">
+                  *Based on a market rate of $2400
+                </div>
+              )
+            }
           </div>
           <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]">
             {totalSaving ? ("$" + new Intl.NumberFormat('en-US').format(totalSaving)) : "$650"}

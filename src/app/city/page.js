@@ -15,14 +15,14 @@ import companyImage2 from "@/Assests/companyImage2.jpeg";
 import companyImage3 from "@/Assests/companyImage3.jpeg";
 import companyImage4 from "@/Assests/companyImage4.jpeg";
 import companyImage5 from "@/Assests/companyImage5.jpeg";
-import companyImage7 from "@/Assests/companyImage7.png";
+import companyImage7 from "@/Assests/companyImage7.jpeg";
 import companyImage6 from "@/Assests/companyImage6.jpeg";
-import companyImage8 from "@/Assests/companyImage8.jpg";
+import companyImage8 from "@/Assests/companyImage8.jpeg";
 import companyImage9 from "@/Assests/companyImage9.jpeg";
 import companyImage10 from "@/Assests/companyImage10.jpeg";
 import companyImage11 from "@/Assests/companyImage11.jpeg";
 import companyImage12 from "@/Assests/companyImage12.jpeg";
-import companyImage13 from "@/Assests/companyImage13.jpeg";
+import companyImage13 from "@/Assests/companyImage13.png";
 import companyImage14 from "@/Assests/companyImage14.jpeg";
 import companyImage15 from "@/Assests/companyImage15.jpeg";
 import companyImage16 from "@/Assests/companyImage16.jpeg";
@@ -60,6 +60,7 @@ const page = () => {
   const [formData, setFormData] = useState({
     location: "",
   });
+  const [isHovered, setIsHovered] = useState(false); // State to manage hover status
 
   const [errors, setErrors] = useState({});
 
@@ -175,7 +176,7 @@ const page = () => {
       companyImage: companyImage6,
     },
     {
-      companyName: "Mr Kelvin",
+      companyName: "CannabCo",
       companyImage: companyImage8,
     },
     {
@@ -195,7 +196,7 @@ const page = () => {
       companyImage: companyImage12,
     },
     {
-      companyName: "Scott Sherman",
+      companyName: "NUGL",
       companyImage: companyImage13,
     },
     {
@@ -345,8 +346,19 @@ const page = () => {
                 </div>
               </div>
               <div className="flex justify-between  px-3 py-2">
-                <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]">
+                <div
+                  className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                >
                   Savings
+                  {
+                    isHovered && (
+                      <div className="font-[400] text-[10px]">
+                        *Based on a market rate of $2400
+                      </div>
+                    )
+                  }
                 </div>
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]">
                   {totalSaving ? ("$" + new Intl.NumberFormat('en-US').format(totalSaving)) : "$650"}
@@ -415,7 +427,7 @@ const page = () => {
               We work with
             </div>
             <div className="font-inter lg:text-[100px] text-[50px] leading-[40px] lg:leading-[96px] tracking-[0px] lg:tracking-[-9px] font-[500] mt-[20px] mb-[50px] w-[40%]">
-              premier brands
+              top-tier brands
             </div>
             <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px]">
               We've done advertising campaigns for industries such as:
