@@ -275,10 +275,16 @@ const Presentation = () => {
     "Albuquerque-Santa Fe",
     "New Orleans"
   ];
+  const handleClickDay = (date) => {
+    setTotalDays(1)
+    setTotalCost(1 * 1750);
+    setTotalSaving(1 * 650);
+  }
   const handleDateChange = (date) => {
+    console.log("date", date)
     setSelectedRange(date);
 
-    if (date.length === 2) {
+    if (Array.isArray(date) && date.length === 2) {
       const startDate = new Date(date[0]);
       const endDate = new Date(date[1]);
       const diffInTime = endDate.getTime() - startDate.getTime();
@@ -568,7 +574,7 @@ const Presentation = () => {
         <div className="bg-[#e4e4e4] mt-[10px]">
           <div className="m-auto w-[100%] max-w-[1280px]">
             <div className="font-inter font-[500] lg:text-[44px] text-[25px] leading-[44px] tracking-[-2.65px] p-4">
-              $1750
+              $1,750
             </div>
             <div className="bg-[#fff] lg:w-[20%] w-[80%] m-auto rounded-lg ">
               <div className="font-inter font-[500] text-[18px] leading-[28px] tracking-[-0.55px] p-3">
@@ -576,6 +582,7 @@ const Presentation = () => {
               </div>
               <Calendar
                 className="text-center p-3"
+                onClickDay={handleClickDay}
                 onChange={handleDateChange}
                 value={selectedRange}
                 selectRange
@@ -583,12 +590,12 @@ const Presentation = () => {
               />
               <div className="flex justify-between bg-[#f9ff8a] px-3 py-2">
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px]">
-                  Price for {totalDays ? totalDays : "0"} days
+                  Price for {totalDays ? totalDays : "1"} days
                 </div>
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px]">
                   {totalCost
                     ? "$" + new Intl.NumberFormat("en-US").format(totalCost)
-                    : "$0"}
+                    : "$1,750"}
                 </div>
               </div>
               <div className="flex justify-between  px-3 py-2">
@@ -598,7 +605,7 @@ const Presentation = () => {
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]">
                   {totalSaving
                     ? "$" + new Intl.NumberFormat("en-US").format(totalSaving)
-                    : "$0"}
+                    : "$650"}
                 </div>
               </div>
             </div>
@@ -616,10 +623,13 @@ const Presentation = () => {
                 starts at
               </div>
               <div className="font-inter font-[500] text-[22px] leading-[28px] tracking-[-0.55px] my-[5px]">
-                $1750
+                $1250
               </div>
               <div className="font-inter font-[400] text-[14px] leading-[20px] tracking-[-0.5px]">
                 per day
+              </div>
+              <div className="font-inter font-[400] text-[14px] leading-[20px] tracking-[-0.5px]">
+                *Savings are based on a market rate of $2400
               </div>
             </div>
           </div>
@@ -699,7 +709,7 @@ const Presentation = () => {
                             Available for
                           </div>
                           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">
-                            Vidio/Image
+                            Video/Image
                           </div>
                         </div>
                         <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">
@@ -742,7 +752,7 @@ const Presentation = () => {
                             Available for
                           </div>
                           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#000]">
-                            Vidio/Image
+                            Video/Image
                           </div>
                         </div>
                         <div className="flex justify-between border-b-[1px] border-b-[#9c9c9f] py-[10px]">

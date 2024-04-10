@@ -54,8 +54,8 @@ const page = () => {
   const [truckSide, setTruckSide] = useState("side");
   const [viewType, setViewType] = useState("2d");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [totalCost , setTotalCost] = useState(null)
-  const [totalDays , setTotalDays] = useState(null)
+  const [totalCost, setTotalCost] = useState(null)
+  const [totalDays, setTotalDays] = useState(null)
   const [totalSaving, setTotalSaving] = useState(null)
   const [formData, setFormData] = useState({
     location: "",
@@ -267,9 +267,15 @@ const page = () => {
     "Albuquerque-Santa Fe",
     "New Orleans"
   ];
+  const handleClickDay = (date) => {
+    setTotalDays(1)
+    setTotalCost(1 * 1750);
+    setTotalSaving(1 * 650);
+  }
   const handleDateChange = (date) => {
     setSelectedRange(date);
-  
+
+
     if (date.length === 2) {
       const startDate = new Date(date[0]);
       const endDate = new Date(date[1]);
@@ -316,7 +322,7 @@ const page = () => {
         <div className="bg-[#e4e4e4]">
           <div className="m-auto w-[100%] max-w-[1280px]">
             <div className="font-inter font-[500] lg:text-[44px] text-[25px] leading-[44px] tracking-[-2.65px] p-4">
-              $1750
+              $1,750
             </div>
             <div className="bg-[#fff] lg:w-[20%] w-[80%] m-auto rounded-lg ">
               <div className="font-inter font-[500] text-[18px] leading-[28px] tracking-[-0.55px] p-3">
@@ -324,6 +330,7 @@ const page = () => {
               </div>
               <Calendar
                 className="text-center p-3"
+                onClickDay={handleClickDay}
                 onChange={handleDateChange}
                 value={selectedRange}
                 selectRange
@@ -331,10 +338,10 @@ const page = () => {
               />
               <div className="flex justify-between bg-[#f9ff8a] px-3 py-2">
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px]">
-                  Price for {totalDays ? totalDays : "0"} days
+                  Price for {totalDays ? totalDays : "1"} days
                 </div>
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px]">
-                  {totalCost? ("$" + new Intl.NumberFormat('en-US').format(totalCost)) : "$0"}
+                  {totalCost ? ("$" + new Intl.NumberFormat('en-US').format(totalCost)) : "$1,750"}
                 </div>
               </div>
               <div className="flex justify-between  px-3 py-2">
@@ -342,7 +349,7 @@ const page = () => {
                   Savings
                 </div>
                 <div className="font-inter font-[500] text-[14px] leading-[20px] leading-[-0.5px] text-[#3C3C43]">
-                {totalSaving? ("$" + new Intl.NumberFormat('en-US').format(totalSaving)) : "$0"}
+                  {totalSaving ? ("$" + new Intl.NumberFormat('en-US').format(totalSaving)) : "$650"}
                 </div>
               </div>
             </div>
@@ -360,7 +367,7 @@ const page = () => {
                 starts at
               </div>
               <div className="font-inter font-[500] text-[22px] leading-[28px] tracking-[-0.55px] my-[5px]">
-                $1750
+                $1250
               </div>
               <div className="font-inter font-[400] text-[14px] leading-[20px] tracking-[-0.5px]">
                 per day
@@ -495,23 +502,23 @@ const page = () => {
             </div>
           </div>
           <div className="lg:w-[33.33%] w-[100%]">
-          <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Specify the city</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Specify the dates</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Attach your advertising materials</div>
-           <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C4399] text-right">сan be skipped and sent after payment</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Provide personal information</div>
-           <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C4399] text-right">
-            <p>First Name</p>
-            <p>Last name</p>
-            <p>Email</p>
-            <p>Phone</p>
-            <p>Company name</p>
-            <p>Notes to LED truck driver</p>
-           </div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Creatives</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Route optimization</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Measurement</div>
-           <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#3C3C4399]">Etc</div>
+            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Specify the city</div>
+            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Specify the dates</div>
+            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Attach your advertising materials</div>
+            <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C4399] text-right">сan be skipped and sent after payment</div>
+            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Provide personal information</div>
+            <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C4399] text-right">
+              <p>First Name</p>
+              <p>Last name</p>
+              <p>Email</p>
+              <p>Phone</p>
+              <p>Company name</p>
+              <p>Notes to LED truck driver</p>
+            </div>
+            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Creatives</div>
+            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Route optimization</div>
+            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">Measurement</div>
+            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#3C3C4399]">Etc</div>
           </div>
         </div>
         <div className="m-auto w-[100%] max-w-[1280px] p-4 flex justify-center">
