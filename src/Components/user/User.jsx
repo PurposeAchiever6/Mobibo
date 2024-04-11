@@ -127,7 +127,7 @@ const User = ({ onNextClick }) => {
     <>
       <div>
         <div className=" pb-12">
-          <div className="flex items-center justify-center lg:my-[14.7%] my-[80.5%]">
+          <div className="flex items-center justify-center sm:my-[14.7%]  my-[70%]">
             <div className="lg:w-[40%] w-[80%]">
               <div className="mt-2">
                 <input

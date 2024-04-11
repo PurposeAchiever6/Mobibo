@@ -31,8 +31,8 @@ const handleFileChangeModalBack = (event) => {
   return (
     <div>
               <div className=" w-[100%] max-w-[1280px] m-auto">
-        <div className="flex lg:flex-row flex-col w-[100%] gap-[40px] pb-[100px] justify-between">
-                <div className="lg:w-[25%] w-[90%] ml-4">
+        <div className="flex lg:flex-row flex-col w-[100%] gap-[40px] pb-[0px] md:pb-[100px]  justify-between">
+                <div className="lg:w-[400px] w-[90%] ml-4">
                   <div className="bg-[#f9ff8a] rounded-full flex w-[100%] p-[2px]">
                     <button
                       className={

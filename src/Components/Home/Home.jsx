@@ -1026,34 +1026,19 @@ const Presentation = () => {
             Run Ads
           </button>
         </div>
-        <Modal
+       <Modal
+        // width={'auto'}
           open={isModalOpen}
           onOk={handleOk}
+          centered
           onCancel={handleCancel}
-          width="100vw" // Change width to 100vw
           footer={null}
-          centered={true}
-          style={{
-            maxWidth: "1280px",
-            height: "100vh",
-            width: "100wh",
-            backgroundColor: "#e4e4e4",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            paddingBottom: "0px",
-            margin: "0px",
-            "@media (minWidth: 600px)": {
-              width: "80%", // or whatever width you want above 600px viewport width
-            },
-            "@media (minWidth: 900px)": {
-              width: "100%", // or whatever width you want above 900px viewport width
-            },
-          }}
+          className="modalCustom" // Use className to reference the styles
         >
-          <Invoice />
-        </Modal>
+          
+           <Invoice /> 
+        </Modal> 
+        
       </div>
     </>
   );

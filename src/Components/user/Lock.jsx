@@ -55,7 +55,7 @@ const convertBytesToMB = (bytes) => {
       <div className="bg-[#e4e4e4] lg:my-[40px] my-[20px]">
         <ModalTruckShow/>
         </div>
-      <div className="flex justify-center p-4  w-full text-center next-btn  mt-5 m-auto">
+      <div className="flex justify-center p-4  w-full text-center next-btn  md:mt-5 m-auto">
         <div>
           <p className="lg:w-[53%] w-[80%] text-center m-auto font-inter tex-[24px]">
             You can skip this step and hand over the creatives after payment. To

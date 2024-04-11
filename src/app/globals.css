@@ -2,26 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@100..900&display=swap');
+
 html {
   scroll-behavior: smooth;
 }
-.font-inter{
+
+.font-inter {
   font-family: "Inter", sans-serif;
 }
-.hero-banner{
+
+.hero-banner {
   background-image: url(../Assests/banner-image.png) !important;
   height: 580px;
   width: 100%;
   background-size: contain;
   background-repeat: no-repeat;
 }
-.gaming-console{
+
+.gaming-console {
   background-image: url(../Assests/GamingConsoleImage.jpeg);
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.tab-buttons{
+.tab-buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,7 +34,8 @@ html {
   border-radius: 1.75em;
   padding: 3px;
 }
-.tab-buttons-mobile{
+
+.tab-buttons-mobile {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,12 +46,14 @@ html {
   width: 70%;
   margin: 0px auto;
 }
-.tab-btn-active:hover{
+
+.tab-btn-active:hover {
   border-radius: 1.75em;
   background-color: #A57BFF;
   color: #ffff;
 }
-.tab-btn{
+
+.tab-btn {
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.5px;
@@ -55,7 +62,8 @@ html {
   font-family: "Inter", sans-serif;
 
 }
-.tab-btn-mobile{
+
+.tab-btn-mobile {
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.5px;
@@ -63,16 +71,19 @@ html {
   padding: 0.75rem 1rem;
   font-family: "Inter", sans-serif;
 }
-.tab-buttons-active{
+
+.tab-buttons-active {
   border-radius: 1.75em;
   background-color: #A57BFF;
   color: #ffff;
 }
-.border-tabs{
+
+.border-tabs {
   border: 1px solid #dddfaf;
   height: 25px;
 }
-.mobile-menu{
+
+.mobile-menu {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -85,12 +96,13 @@ html {
   z-index: 99;
 }
 
-.routes-right{
+.routes-right {
   background-image: url("../Assests/AdsSettings-2.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
-.navlinks{
+
+.navlinks {
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -98,7 +110,8 @@ html {
   gap: 20px;
   cursor: pointer;
 }
-.navlinks-mobile{
+
+.navlinks-mobile {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -107,7 +120,8 @@ html {
   align-items: center;
   gap: 20px;
 }
-.navlinks-mobile li{
+
+.navlinks-mobile li {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   letter-spacing: -0.5px;
@@ -116,7 +130,8 @@ html {
   cursor: pointer;
   color: #3C3C43;
 }
-.navlinks li{
+
+.navlinks li {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   letter-spacing: -0.5px;
@@ -125,10 +140,12 @@ html {
   cursor: pointer;
   color: #3C3C43;
 }
-.navlinks li:hover{
+
+.navlinks li:hover {
   color: #000000;
 }
-.order-button{
+
+.order-button {
   padding: 1rem;
   font-family: "Inter", sans-serif;
   font-weight: 500;
@@ -138,46 +155,54 @@ html {
   background: #80FFAB;
   border-radius: 12px;
 }
+
 .order-button:hover {
-   color: #80FFAB;
-   border: 1px solid #80FFAB;
-   background-color: #fff;
-   transition: all 0.5s;
+  color: #80FFAB;
+  border: 1px solid #80FFAB;
+  background-color: #fff;
+  transition: all 0.5s;
 }
-.menu-toggle{
+
+.menu-toggle {
   display: none;
 }
 
-.navbar{
+.navbar {
   padding: 5px 1rem;
   width: 100%;
   max-width: 1280px;
   margin: 0px auto;
 }
+
 .react-calendar__month-view__days__day--neighboringMonth {
   color: gray !important;
 }
-.react-calendar__navigation{
+
+.react-calendar__navigation {
   margin-bottom: 15px;
 }
+
 .react-calendar__tile--active abbr {
   background: #a57bff;
   color: #ffffff;
   border-radius: 60px;
-  padding:2px;
+  padding: 2px;
 }
-.react-calendar__tile{
-  font-size:12px;
+
+.react-calendar__tile {
+  font-size: 12px;
 }
-.react-calendar__month-view__days{
+
+.react-calendar__month-view__days {
   gap: 6px;
 }
 
 .react-calendar__tile abbr:hover {
-  border:1px solid #a57bff; 
+  border: 1px solid #a57bff;
   border-radius: 60px;
 }
-.footer-navigation{
+
+.footer-navigation {
   list-style: none;
   font-family: "Inter", sans-serif;
   font-weight: 400;
@@ -187,7 +212,8 @@ html {
   letter-spacing: 0.05px;
   color: #8b8b90;
 }
-.footer-address{
+
+.footer-address {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 12px;
@@ -195,16 +221,18 @@ html {
   letter-spacing: 0.05px;
   color: #535357;
 }
-.footer-callbtn{
-   background: #39393d;
-   border: 1px solid #8b8b90;
-   color: #8b8b90;
-   font-size: 16px;
-   padding: 0.5rem 1rem;
-   border-radius: 0.5rem;
-   margin-top: 10px;
+
+.footer-callbtn {
+  background: #39393d;
+  border: 1px solid #8b8b90;
+  color: #8b8b90;
+  font-size: 16px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 10px;
 }
-.needtoknow{
+
+.needtoknow {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 12px;
@@ -212,44 +240,52 @@ html {
   letter-spacing: 0.05px;
   color: #ffff;
 }
-.adsBlog-btn{
+
+.adsBlog-btn {
   background-color: #ffff;
   color: #000;
   padding: 0.5rem;
   border-radius: 1rem;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
-.footer-container{
+.footer-container {
   width: 100%;
   display: flex;
   flex-direction: row;
   gap: 0px;
- 
+
 }
-.footer-wrap{
+
+.footer-wrap {
   max-width: 1280px;
   margin: 0px auto;
   width: 100%;
   box-sizing: border-box;
 }
-.footer-logo{
+
+.footer-logo {
   width: 30%;
 }
-.footer-links{
+
+.footer-links {
   width: 20%;
 }
-.Address-main{
+
+.Address-main {
   width: 20%;
 }
-.know-sec{
+
+.know-sec {
   width: 20%;
 }
-.copyright-sec{
+
+.copyright-sec {
   display: flex;
   margin-top: 30px;
 }
-.company-name{
+
+.company-name {
   padding-top: 87% !important;
   padding: 0.5rem;
   font-family: "Inter", sans-serif;
@@ -258,7 +294,8 @@ html {
   line-height: 16px;
   letter-spacing: 0.05px;
 }
-.company-name p{
+
+.company-name p {
   background: #695953;
   border-radius: 9999px;
   width: fit-content;
@@ -266,49 +303,58 @@ html {
   color: #ffff;
 }
 
-.social-icon:hover{
-  width:25px;
-  transition : all 0.5s;
+.social-icon:hover {
+  width: 25px;
+  transition: all 0.5s;
 }
-.footer-callbtn:hover{
-  border:1px solid #ffff;
+
+.footer-callbtn:hover {
+  border: 1px solid #ffff;
   color: #ffff;
   transition: all 1s;
 }
-.footer-navigation:hover{
+
+.footer-navigation:hover {
   color: #ffff;
   transition: all 1s;
 }
-.adsBlog-btn:hover{
+
+.adsBlog-btn:hover {
   border: 1px solid #ffff;
   color: #ffff;
   background: none;
   transition: all 0.5s;
 }
+
 /* Custom styles for react-calendar */
 .react-calendar {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Align month name to the left */
+  align-items: center;
+  /* Align month name to the left */
 }
-.ant-modal-content{
-  width: 100vw;
+
+.ant-modal-content {
+  /* width: 100vw; */
 }
+
 .react-calendar__navigation {
   display: flex;
-  justify-content: flex-end; /* Align navigation arrows to the right */
+  justify-content: flex-end;
+  /* Align navigation arrows to the right */
 }
 
 .react-calendar__navigation button {
   margin: 0 5px;
 }
 
-.adCampain-container{
+.adCampain-container {
   margin: 0px auto;
   max-width: 1280px;
   width: 100%;
 }
-.adCampain-wrap{
+
+.adCampain-wrap {
   display: flex;
   width: 100%;
   padding-top: 40px;
@@ -316,18 +362,20 @@ html {
   gap: 10px;
 
 }
-.adCampain-heading{
+
+.adCampain-heading {
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 34px;
   width: 32%;
 }
-.adCampain-sec{
- width: 23%;
- font-family: "Inter", sans-serif;
+
+.adCampain-sec {
+  width: 23%;
+  font-family: "Inter", sans-serif;
 }
 
-.main-h-adCampain{
+.main-h-adCampain {
   margin-top: 20px;
   font-family: "Inter", sans-serif;
   padding-bottom: 40px;
@@ -336,19 +384,23 @@ html {
   width: 100%;
   display: flex;
 }
-.heading-campain{
+
+.heading-campain {
   font-size: 80px;
   font-weight: 500;
   letter-spacing: -4px;
   line-height: 70px;
-  font-family: "Inter", sans-serif;}
-.allCompain-container{
+  font-family: "Inter", sans-serif;
+}
+
+.allCompain-container {
   margin: 0px auto;
   font-family: "Inter", sans-serif;
   max-width: 1280px;
   width: 100%;
 }
-.routes-wrap{
+
+.routes-wrap {
   width: 100%;
   display: flex;
   padding-top: 40px;
@@ -357,111 +409,213 @@ html {
   padding: 0px 20px;
   margin-top: 40px;
 }
-.routes-left,.routes-right{
+
+.routes-left,
+.routes-right {
   width: 50%;
 }
-.routes-right{
+
+.routes-right {
   margin-left: 80px;
 }
-.swiper-pagination-bullet-active{
-  background:  #ff80fd !important;
+
+.swiper-pagination-bullet-active {
+  background: #ff80fd !important;
 }
-.swiper-pagination-bullet{
-  background:  #f9ff8a !important;
+
+.swiper-pagination-bullet {
+  background: #f9ff8a !important;
 }
-.modal-bg-side{
+
+.modal-bg-side {
   background-image: url(../Assests/truck-archi.png);
   background-size: contain;
   background-repeat: no-repeat
 }
-.truckShow-bg-side{
+
+.truckShow-bg-side {
   background-image: url(../Assests/truck-archi.png);
   background-size: contain;
   background-repeat: no-repeat
 }
-.modal-bg-back{
+
+.modal-bg-back {
   background-image: url(../Assests/back-truck.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
-.truckShow-bg-back{
+
+.truckShow-bg-back {
   background-image: url(../Assests/back-truck.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
-.ant-select-focused:where(.css-dev-only-do-not-override-1km2u5u).ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector{
-  outline:none !important;
-  border:none !important;
-  box-shadow:none !important;
+
+.ant-select-focused:where(.css-dev-only-do-not-override-1km2u5u).ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
-:where(.css-dev-only-do-not-override-1km2u5u).ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector{
-  border:none !important;
+
+:where(.css-dev-only-do-not-override-1km2u5u).ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
+  border: none !important;
 }
 
 @media screen and (max-width:580px) {
-.hero-banner{
-  height: 200px;
+  .hero-banner {
+    height: 200px;
+  }
+
+  .truckShow-bg-side {
+    background-size: contain;
+  }
+
+  .modal-bg-side {
+    background-size: contain;
+  }
+
+  .adCampain-wrap {
+    flex-direction: column;
+  }
+
+  .adCampain-sec {
+    width: 100%;
+  }
+
+  .adCampain-heading {
+    width: 85%
+  }
+
+  .heading-campain {
+    font-size: 40px;
+  }
+
+  .routes-wrap {
+    flex-direction: column;
+  }
+
+  .routes-right {
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  .know-sec {
+    width: 80%;
+    margin: 30px 0px;
+  }
+
+  .Address-main {
+    width: 80%;
+  }
+
+  .footer-logo {
+    width: 100%;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .tab-buttons,
+  .navlinks {
+    display: none;
+  }
+
+  .gaming-console {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+
+  .adCampain-wrap {
+    padding: 1rem;
+  }
+
+  .heading-campain {
+    line-height: normal;
+  }
+
+  .routes-right {
+    background-size: contain;
+    height: 600px;
+  }
 }
-.truckShow-bg-side{
-  background-size: contain;
-}
-.modal-bg-side{
-  background-size: contain;
-}
-.adCampain-wrap{
-  flex-direction: column;
-}
-.adCampain-sec{
+
+/* user pop up */
+.modalCustom {
   width: 100%;
+  /* default width */
+  max-width: 1280px;
+  /* background-color: #e4e4e4; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 0px;
+  margin: 0px;
 }
-.adCampain-heading{
-  width: 85%
+
+@media (max-width: 640px) {
+  .modalCustom {
+    width: 100vw;
+    /* width above 600px viewport width */
+    height: 100vh;
+  }
+
+  .ant-modal {
+    margin: unset !important;
+  }
+
+  .ant-modal .ant-modal-content {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    top: 0;
+    border-radius: unset !important;
+  }
+
+  .ant-modal-body {
+    overflow: auto;
+    height: calc(100vh - 50px);
+  }
+
+  .ant-modal-centered {
+    text-align: unset !important;
+  }
 }
-.heading-campain{
-  font-size: 40px;
-}
-.routes-wrap{
-  flex-direction: column;
-}
-.routes-right{
-  margin-left: 0px;
-  width:100%;
-}
-.know-sec{
- width: 80%;
- margin: 30px 0px;
-}
-.Address-main{
-  width: 80%;
-}
-.footer-logo{
-  width: 100%;
-}
-.footer-container{
-  flex-direction: column;
-  gap: 10px;
-}
-.menu-toggle{
-  display: block;
-}
-.tab-buttons,.navlinks{
-  display: none;
-}
-.gaming-console {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: bottom;
-}
-.adCampain-wrap{
-  padding: 1rem;
-}
-.heading-campain{
-  line-height: normal;
-}
-.routes-right{
-  background-size: contain;
-  height: 600px;
-}
+
+@media (min-width: 640px) {
+  .modalCustom {
+    width: 100vw;
+    /* width above 600px viewport width */
+    height: 100vh;
+  }
+
+  .ant-modal {
+    margin: unset !important;
+  }
+
+  .ant-modal .ant-modal-content {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    top: 0;
+    /* border-radius: unset !important; */
+  }
+
+  .ant-modal-body {
+    overflow: auto;
+    height: calc(100vh - 50px);
+  }
+
+  .ant-modal-centered {
+    text-align: unset !important;
+  }
 }
