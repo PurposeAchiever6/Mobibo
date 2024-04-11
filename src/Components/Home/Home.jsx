@@ -394,7 +394,7 @@ const Presentation = () => {
             </div>
           </div>
         </div>
-        <div className="lg:flex block justify-between items-center p-4 w-[100%] max-w-[1280px] m-auto">
+        <div id="feature" className="lg:flex block justify-between items-center p-4 w-[100%] max-w-[1280px] m-auto">
           <div>
             <div className="font-inter text-[#e4e4e6] lg:text-[100px] lg:tracking-[-11px] tracking-[0px] lg:leading-[96px] leading-[0px] font-[700]">
               LED TRUCK
@@ -456,7 +456,7 @@ const Presentation = () => {
             </div>
           </div>
         </div>
-        <div className="gaming-console p-4 w-[100%] max-w-[1280px] m-auto">
+        <div id="experience" className="gaming-console p-4 w-[100%] max-w-[1280px] m-auto">
           <div className="flex lg:flex-row flex-col w-[100%] ">
             <div className="lg:w-[50%] w-[80%] font-inter leading-[32px] tracking-[-0.8px] lg:text-[24px] text-[22px] lg:text-[#EBEBF5] text-[#000]">
               You can use the LED truсk as
@@ -573,7 +573,7 @@ const Presentation = () => {
             </div>
           ))}
         </div>
-        <div className="bg-[#e4e4e4] mt-[10px]">
+        <div id="pricing" className="bg-[#e4e4e4] mt-[10px]">
           <div className="m-auto w-[100%] max-w-[1280px]">
             <div className="font-inter font-[500] lg:text-[44px] text-[25px] leading-[44px] tracking-[-2.65px] p-4">
               $1,750
@@ -648,7 +648,7 @@ const Presentation = () => {
             alt="dreamtruck"
             className="w-[100%] max-w-[1280px] m-auto"
           />
-          <div className="bg-[#e4e4e4]">
+          <div id="trucks" className="bg-[#e4e4e4]">
             <div className=" w-[100%] max-w-[1280px] m-auto">
               <div className="font-inter font-[500] lg:text-[44px] text-[25px] leading-[44px] lg:tracking-[-2.65px] tracking-[0px] lg:py-[150px] py-[40px] text-center">
                 Test your ideas
@@ -900,7 +900,7 @@ const Presentation = () => {
         <div>
           <AllCompainRoutes />
         </div>
-        <div className="flex items-center my-[60px] w-[100%] p-4 lg:flex-row flex-col gap-[20px] lg:gap-[0px] m-auto w-[100%] max-w-[1280px] p-4">
+        <div id="coverage" className="flex items-center my-[60px] w-[100%] p-4 lg:flex-row flex-col gap-[20px] lg:gap-[0px] m-auto w-[100%] max-w-[1280px] p-4">
           <div className="lg:w-[50%] w-[100%] relative flex items-center justify-center">
             <Image src={Routesimage} />
             <div className="absolute">
@@ -967,7 +967,7 @@ const Presentation = () => {
           <div className="lg:w-[33.33%] w-[100%]">
             <Image src={orderProcess} />
           </div>
-          <div className="lg:w-[33.33%] w-[100%]">
+          <div id="orderprocess" className="lg:w-[33.33%] w-[100%]">
             <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">
               1. &nbsp;Application for advertising placement
             </div>

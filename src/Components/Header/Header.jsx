@@ -21,49 +21,6 @@ const Header = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
-  const handleScroll = (value) => {
-    if (value === "Feature") {
-      window.scrollTo({ behavior: "smooth", top: 800 });
-    } else if (value === "Experience") {
-      window.scrollTo({ behavior: "smooth", top: 1670 });
-    } else if (value === "Pricing") {
-      window.scrollTo({ behavior: "smooth", top: 2540 });
-    } else if (value === "Trucks") {
-      window.scrollTo({ behavior: "smooth", top: 3040 });
-    } else if (value === "AdsSettings") {
-      window.scrollTo({ behavior: "smooth", top: 4315 });
-    } else if (value === "Coverage") {
-      window.scrollTo({ behavior: "smooth", top: 7315 });
-    } else if (value === "OrderProcess") {
-      window.scrollTo({ behavior: "smooth", top: 9815 });
-    }
-  };
-
-  const handleScrollResp = (value) => {
-    if (value === "Feature") {
-      window.scrollTo({ behavior: "smooth", top: 290 });
-      setIsOpen(false);
-    } else if (value === "Experience") {
-      window.scrollTo({ behavior: "smooth", top: 1000 });
-      setIsOpen(false);
-    } else if (value === "Pricing") {
-      window.scrollTo({ behavior: "smooth", top: 1800 });
-      setIsOpen(false);
-    } else if (value === "Trucks") {
-      window.scrollTo({ behavior: "smooth", top: 2200 });
-      setIsOpen(false);
-    } else if (value === "AdsSettings") {
-      window.scrollTo({ behavior: "smooth", top: 8065 });
-      setIsOpen(false);
-    } else if (value === "Coverage") {
-      window.scrollTo({ behavior: "smooth", top: 10185 });
-      setIsOpen(false);
-    } else if (value === "OrderProcess") {
-      window.scrollTo({ behavior: "smooth", top: 13400 });
-      setIsOpen(false);
-    }
-  };
  
   const activeStyles = "rounded-full px-4 py-2 bg-[#A57BFF] font-inter text-[#fff] font-[600] text-[12px] cursor-pointer";
   const nonActiveStyles = " px-4 py-2 font-inter text-[#3C3C4399] font-[400] text-[12px] cursor-pointer";
@@ -80,6 +37,7 @@ const Header = () => {
               <div className="tab-buttons-mobile">
               <Link
               href="/"
+              onClick={() => setIsOpen(false)} 
               className={
                 currentRoute === "/"
                   ? activeStyles
@@ -92,6 +50,7 @@ const Header = () => {
                 <div className="border-tabs-mobile"></div>
                 <Link
               href="/city"
+              onClick={() => setIsOpen(false)} 
               className={
                 currentRoute === "/city"
                   ? activeStyles
@@ -103,6 +62,7 @@ const Header = () => {
                 <div className="border-tabs-mobile"></div>
                 <Link
               href="/blog"
+              onClick={() => setIsOpen(false)} 
               className={
                 currentRoute === "/blog"
                   ? activeStyles
@@ -117,51 +77,44 @@ const Header = () => {
             <li
               className=""
               value="Feature"
-              onClick={() => handleScrollResp("Feature")}
             >
-              Features
+              <a href="#feature" onClick={() => setIsOpen(false)}>Features</a>
             </li>
             <li
               className=""
               value="Experience"
-              onClick={() => handleScrollResp("Experience")}
             >
-              Experience
+              <a href="#experience" onClick={() => setIsOpen(false)}>Experience</a>
             </li>
             <li
               className=""
               value="Pricing"
-              onClick={() => handleScrollResp("Pricing")}
             >
-              Pricing
+              <a href="#pricing" onClick={() => setIsOpen(false)}>Pricing</a>
             </li>
             <li
               className=""
               value="Trucks"
-              onClick={() => handleScrollResp("Trucks")}
             >
-              Trucks
+              <a href="#trucks" onClick={() => setIsOpen(false)}>Trucks</a>
             </li>
             <li
               className=""
               value="AdsSettings"
-              onClick={() => handleScrollResp("AdsSettings")}
             >
-              Ads Settings
+              <a href="#adssettings" onClick={() => setIsOpen(false)}>Ads Settings</a>
             </li>
             <li
               className=""
               value="Coverage"
-              onClick={() => handleScrollResp("Coverage")}
             >
-              Coverage
+              <a href="#coverage" onClick={() => setIsOpen(false)}>Coverage</a>
             </li>
             <li
               className=""
               value="OrderProcess"
-              onClick={() => handleScrollResp("OrderProcess")}
             >
-              Order Process
+              <a href="#orderprocess" onClick={() => setIsOpen(false)}>Order Process</a>
             </li>
           </div> : '' }
             </div>
@@ -205,51 +158,44 @@ const Header = () => {
             <li
               className=""
               value="Feature"
-              onClick={() => handleScroll("Feature")}
             >
-              Features
+              <a href="#feature">Features</a>
             </li>
             <li
               className=""
               value="Experience"
-              onClick={() => handleScroll("Experience")}
             >
-              Experience
+              <a href="#experience">Experience</a>
             </li>
             <li
               className=""
               value="Pricing"
-              onClick={() => handleScroll("Pricing")}
             >
-              Pricing
+              <a href="#pricing">Pricing</a>
             </li>
             <li
               className=""
               value="Trucks"
-              onClick={() => handleScroll("Trucks")}
             >
-              Trucks
+              <a href="#trucks">Trucks</a>
             </li>
             <li
               className=""
               value="AdsSettings"
-              onClick={() => handleScroll("AdsSettings")}
             >
-              Ads Settings
+              <a href="#adssettings">Ads Settings</a>
             </li>
             <li
               className=""
               value="Coverage"
-              onClick={() => handleScroll("Coverage")}
             >
-              Coverage
+              <a href="#coverage">Coverage</a>
             </li>
             <li
               className=""
               value="OrderProcess"
-              onClick={() => handleScroll("OrderProcess")}
             >
-              Order Process
+              <a href="#orderprocess">Order Process</a>
             </li>
           </div> : '' }
         </div>

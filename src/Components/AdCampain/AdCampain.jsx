@@ -2,7 +2,7 @@ import React from "react";
 
 const AdCampain = () => {
   return (
-    <div className="adCampain-container">
+    <div id="adssettings" className="adCampain-container">
       <div className="adCampain-wrap">
         <h4 className="adCampain-heading">
           {" "}
