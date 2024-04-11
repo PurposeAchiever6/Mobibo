@@ -867,7 +867,9 @@ const Presentation = () => {
                       </div>
                     )
                   ) : (
-                    <div className="lg:w-[70%] w-[100%]">Coming soon!</div>
+                    <div className="lg:w-[80%] w-[100%]">
+                      <ThreeScene selectedImageSide={selectedImageSide} selectedImageBack={selectedImageBack} truckSide={truckSide} fileTypeSide={fileTypeSide} fileTypeBack={fileTypeBack}/>
+                    </div>
                   )}
                 </div>
               )}
@@ -1026,8 +1028,8 @@ const Presentation = () => {
             Run Ads
           </button>
         </div>
-       <Modal
-        // width={'auto'}
+        <Modal
+          // width={'auto'}
           open={isModalOpen}
           onOk={handleOk}
           centered
@@ -1035,10 +1037,10 @@ const Presentation = () => {
           footer={null}
           className="modalCustom" // Use className to reference the styles
         >
-          
-           <Invoice /> 
-        </Modal> 
-        
+
+          <Invoice />
+        </Modal>
+
       </div>
     </>
   );
