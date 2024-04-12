@@ -22,12 +22,12 @@ const page = () => {
 
   function handleDetails(item) {
     const id = encodeURIComponent(item.id);
-    return `/blog/content?id=${id}`;
+    return `/blog/${id}`;
   }
 
 
   return (
-    <div className=" bg-[#e4e4e4]  border-t-[1px]">
+    <div className="bg-[#e4e4e4]  border-t-[1px]">
       <div className="bg-[#fff] px-4 py-2 flex gap-[10px] flex-wrap">
         <button className={tab === "led-billboards" ? "px-4 py-2 rounded-full border-[1px] border-[#e4e4e4]  font-inter text-[16px] bg-[#FF80FD] text-[#fff]" : "px-4 py-2 rounded-full border-[1px] border-[#e4e4e4] text-[#98989c] font-inter text-[16px] hover:bg-[#FF80FD] hover:text-[#fff]"} onClick={() => setTab("led-billboards")}>
           LED Billboards
@@ -47,7 +47,7 @@ const page = () => {
       </div>
       <div className="flex lg:flex-row flex-col flex-wrap gap-[10px] w-[100%] p-4 m-auto w-[100%] max-w-[1280px]">
         {blogData.map((item, index) => (
-          <div className="flex justify-center items-center w-full lg:w-1/4 mx-auto cursor-pointer">
+          <div key={index} className="flex justify-center items-center w-full lg:w-1/4 mx-auto cursor-pointer">
             <Link href={handleDetails(item)}>
               <CityCard
                 title={item.title}

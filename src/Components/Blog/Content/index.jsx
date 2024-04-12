@@ -1,6 +1,6 @@
 'use client'
 import { LeftOutlined } from '@ant-design/icons'
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect} from "react";
 import Image from 'next/image';
 import companyImage1 from "@/Assests/companyImage13.png";
 import companyImage2 from "@/Assests/companyImage2.jpeg";
@@ -36,7 +36,8 @@ function urlFor(source) {
   return builder.image(source);
 }
 
-const page = ({ searchParams }) => {
+
+const BlogContent = ({ id }) => {
   const router = useRouter();
   const [title, setTitle] = useState([]);
   const [publication_time, setPublicationTime] = useState([]);
@@ -45,13 +46,11 @@ const page = ({ searchParams }) => {
 
   useEffect(() => {
     async function init() {
-      const id = searchParams.id;
+      
       const blog = await getBlog('');
-      console.log("searchParams: ", searchParams)
-      console.log("router.query: ", router.query)
-      console.log("id: ", id)
-      console.log("blog[id - 1]: ", blog[id - 1])
-      console.log("blog[id - 1].title: ", blog[id - 1].title)
+    
+    
+    
       setTitle(blog[id - 1].title);
       setPublicationTime(blog[id - 1].publication_time);
       const image_ = blog[id - 1].image.asset;
@@ -108,4 +107,4 @@ const page = ({ searchParams }) => {
   )
 }
 
-export default page
+export default BlogContent
