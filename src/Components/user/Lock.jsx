@@ -63,7 +63,8 @@ const convertBytesToMB = (bytes) => {
           </p>
           <div className=" ">
             <button className="rounded-md bg-[#f7f7f7] px-3 py-2 text-sm font-semibold text-[#000] shadow-sm  ml-auto mt-[10px]" onClick={nextClick}>
-              Skip <ArrowLeftOutlined className="pt-[3px] pl-2" />
+              Skip
+              {/* <ArrowLeftOutlined className="pt-[3px] pl-2" /> */}
             </button>
             <button
               className="rounded-md bg-[#80FFAB] ml-[20px] px-3 py-2 text-sm font-semibold text-[#000] shadow-sm hover:text-indigo-500  mt-[10px]"

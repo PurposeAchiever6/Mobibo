@@ -91,19 +91,20 @@ const Review = ({onPreviousClick}) => {
       
       if (Object.keys(newErrors).length === 0) {
         console.log("No validation errors, calling onNextClick");
-        Swal.fire({
-          title: 'Form Submitted!',
-          text: 'Your form has been Submitted!',
-          icon: 'success',
-          showCancelButton: false, 
-          confirmButtonColor: '#3085d6',
-          confirmButtonText: 'OK',
-          allowOutsideClick: false,
-          }).then((result) => {
-          if (result.isConfirmed) {
-            router.push('/thankyou');
-          }
-        });
+        // Swal.fire({
+        //   title: 'Form Submitted!',
+        //   text: 'Your form has been Submitted!',
+        //   icon: 'success',
+        //   showCancelButton: false, 
+        //   confirmButtonColor: '#3085d6',
+        //   confirmButtonText: 'OK',
+        //   allowOutsideClick: false,
+        //   }).then((result) => {
+        //   if (result.isConfirmed) {
+        //     router.push('/thankyou');
+        //   }
+        // });
+        router.push('/thankyou');
       }  
        else {
         console.log("Validation errors found, not calling onNextClick");

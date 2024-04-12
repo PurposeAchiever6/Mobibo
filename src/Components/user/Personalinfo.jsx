@@ -48,7 +48,7 @@ const Personalinfo = ({ onNextClick, onPreviousClick }) => {
   return (
     <div>
       <div className="text-center">Select a period</div>
-      <div className="bg-[#fff] lg:w-[70%] w-[80%] m-auto rounded-lg my-[50px]">
+      <div className="bg-[#fff] lg:w-[40%] w-[80%] m-auto rounded-lg my-[50px]">
         <div className="font-inter font-[500] text-[18px] leading-[28px] tracking-[-0.55px] p-3">
           Calculate the cost of rent
         </div>

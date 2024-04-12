@@ -16,6 +16,72 @@ import "./invoice.module.css";
 import { Checkbox, Divider, Select } from "antd";
 
 const User = ({ onNextClick }) => {
+  const RoutesTravel = [
+    "New York",
+    "Los Angeles",
+    "Chicago",
+    "Philadelphia",
+    "Dallas-Fort Worth",
+    "Atlanta",
+    "Houston",
+    "Washington-Hagerstown",
+    "Boston-Manchester",
+    "San Francisco-Oakland-San Jose",
+    "Phoenix-Prescott",
+    "Seattle-Tacoma",
+    "Tampa-St Petersburg-Sarasota",
+    "Detroit",
+    "Minneapolis-Saint Paul",
+    "Denver",
+    "Orlando-Daytona Beach-Melbourne",
+    "Miami-Fort Lauderdale",
+    "Cleveland-Akron-Canton",
+    "Sacramento-Stockton-Modesto",
+    "Charlotte",
+    "Portland, OR",
+    "Raleigh-Durham-Fayetteville",
+    "Saint Louis",
+    "Indianapolis",
+    "Pittsburgh",
+    "Nashville",
+    "Baltimore",
+    "Salt Lake City",
+    "San Diego",
+    "San Antonio",
+    "Columbus, OH",
+    "Kansas City",
+    "Hartford-New Haven",
+    "Austin",
+    "Cincinnati",
+    "Greenville-Spartanburg-Asheville-Anderson",
+    "Milwaukee",
+    "West Palm Beach-Fort Pierce",
+    "Las Vegas",
+    "Jacksonville",
+    "Grand Rapids-Kalamazoo-Battle Creek",
+    "Harrisburg-Lancaster-Lebanon-York",
+    "Norfolk-Portsmouth-Newport News",
+    "Birmingham-Anniston-Tuscaloosa",
+    "Oklahoma City",
+    "Greensboro-High Point-Winston Salem",
+    "Louisville",
+    "Albuquerque-Santa Fe",
+    "New Orleans"
+  ];
+  // handle input change
+  const handleChange = value => {
+    console.log(`selected ${value}`);
+  };
+
+  const handleSearch = value => {
+    console.log('search:', value);
+  };
+
+  // Filter `option.children` match the user type `input`
+  const filterOption = (input, option) =>
+    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0;
+
+
   const [selectedCity, setSelectedCity] = useState("Lahore");
   const [selectedCountry, setSelectedCountry] = useState("Pakistan");
 
@@ -35,8 +101,8 @@ const User = ({ onNextClick }) => {
 
   const [errors, setErrors] = useState({});
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const handleInputChange = (value) => {
+    const name = "mobile";
 
     setFormData({
       ...formData,
@@ -93,7 +159,7 @@ const User = ({ onNextClick }) => {
     // }
 
     if (!formData.mobile.trim()) {
-      newErrors.mobile = "Please Fill that";
+      newErrors.mobile = "City is needed.";
     }
     // if (!formData.address.trim()) {
     //   newErrors.address = "Address is required";
@@ -130,15 +196,20 @@ const User = ({ onNextClick }) => {
           <div className="flex items-center justify-center sm:my-[14.7%]  my-[70%]">
             <div className="lg:w-[40%] w-[80%]">
               <div className="mt-2">
-                <input
-                  type="text"
-                  name="mobile"
-                  id="mobile"
+                <Select
+                  showSearch
                   placeholder="What city do you want to advertise in?"
-                  autoComplete="given-name"
-                  className="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-[#6366F1] sm:text-sm sm:leading-6"
-                  onChange={handleInputChange} // Corrected onChange handler
-                />
+                  optionFilterProp="children"
+                  onChange={handleInputChange}
+                  onSearch={handleSearch}
+                  filterOption={filterOption}
+                  style={{ width: '100%' }}
+                >
+                  {RoutesTravel.map((city, index) => (
+                    <Option key={index} value={city}>{city}</Option>
+                  ))}
+                </Select>
+
                 {errors.mobile && (
                   <p className="text-sm text-[red] mt-1">{errors.mobile}</p>
                 )}
