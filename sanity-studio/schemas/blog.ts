@@ -35,6 +35,11 @@ export default defineType({
       type: 'text',
     }),
     defineField({
+      name: 'author',
+      title: 'Author',
+      type: 'string',
+    }),
+    defineField({
       name: 'publication_time',
       title: 'Publication time',
       type: 'date',
