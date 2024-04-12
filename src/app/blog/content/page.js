@@ -47,6 +47,8 @@ const page = ({ searchParams }) => {
     async function init() {
       const id = searchParams.id;
       const blog = await getBlog('');
+      console.log("searchParams: ", searchParams)
+      console.log("router.query: ", router.query)
       console.log("id: ", id)
       console.log("blog[id - 1]: ", blog[id - 1])
       console.log("blog[id - 1].title: ", blog[id - 1].title)
