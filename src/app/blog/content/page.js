@@ -47,6 +47,9 @@ const page = ({ searchParams }) => {
     async function init() {
       const id = searchParams.id;
       const blog = await getBlog('');
+      console.log("id: ", id)
+      console.log("blog[id - 1]: ", blog[id - 1])
+      console.log("blog[id - 1].title: ", blog[id - 1].title)
       setTitle(blog[id - 1].title);
       setPublicationTime(blog[id - 1].publication_time);
       const image_ = blog[id - 1].image.asset;
