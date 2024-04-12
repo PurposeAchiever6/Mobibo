@@ -107,11 +107,6 @@ const ThreeScene = (props) => {
                                 }, { once: true });
                             }
                         }
-                        else {
-                            textureLoader.load('images/truck2.PNG', function (texture) {
-                                applyTexture(child, texture);
-                            });
-                        }
                     } else if (child.name.endsWith("B")) {
                         child.visible = true;
                         if (props.selectedImageBack) {
@@ -147,11 +142,6 @@ const ThreeScene = (props) => {
                                     // Consider app logic for cleanup
                                 }, { once: true });
                             }
-                        }
-                        else {
-                            textureLoader.load('images/truck1.PNG', function (texture) {
-                                applyTexture(child, texture);
-                            });
                         }
                     }
                 }
