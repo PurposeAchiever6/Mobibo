@@ -150,16 +150,16 @@ const User = ({ onNextClick }) => {
 
       <div className="flex justify-center p-4  w-full text-center next-btn  mt-5 m-auto">
         <div>
-          <button className={formData.mobile.trim() ? "rounded-md bg-[#80FFAB] px-3 py-2 text-sm font-semibold text-[#000] shadow-sm hover:text-indigo-500 ml-auto mt-[10px]" : "rounded-md bg-[#f7f7f7] px-3 py-2 text-sm font-semibold text-[#d5d5d7] shadow-sm cursor-not-allowed ml-auto mt-[10px]"} onClick={handleSubmit}>
+          <button className={formData.mobile.trim() ? "rounded-md bg-[#80FFAB] px-3 py-2 text-base font-semibold text-[#000] shadow-sm hover:text-indigo-500 ml-auto mt-[10px]" : "rounded-md bg-[#f7f7f7] px-3 py-2 text-sm font-semibold text-[#d5d5d7] shadow-sm cursor-not-allowed ml-auto mt-[10px]"} onClick={handleSubmit}>
             Next <ArrowRightOutlined className="pt-[3px] pl-2" />
           </button>
-          <br/><br/>
-          <strong>
-          <p className="text-center m-auto font-inter tex-[24px]">
+          <br /><br />
+          <p className="text-center m-auto font-inter text-sm">
             Don’t see your city?&nbsp;
-            <a href="mailto:joe@heymobibo.com">Contact us</a>
+            <strong>
+              <a href="mailto:joe@heymobibo.com" className="text-base">Contact us</a>
+            </strong>
           </p>
-          </strong>
         </div>
       </div>
     </>

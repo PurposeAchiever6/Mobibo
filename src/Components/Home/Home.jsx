@@ -1018,9 +1018,6 @@ const Presentation = () => {
             <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">
               Measurement
             </div>
-            <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px] text-[#3C3C4399]">
-              Etc
-            </div>
           </div>
         </div>
         <div className="m-auto w-[100%] max-w-[1280px] p-4 flex justify-center">
