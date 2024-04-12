@@ -12,6 +12,8 @@
     "@ant-design/icons": "^5.3.5",
     "@aws-sdk/client-s3": "^3.540.0",
     "@emailjs/browser": "^4.3.3",
+    "@sanity/client": "^6.15.13",
+    "@sanity/image-url": "^1.0.2",
     "antd": "^5.16.0",
     "axios": "^1.6.8",
     "chalk": "^5.3.0",

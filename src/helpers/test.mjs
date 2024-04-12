@@ -2,6 +2,7 @@ import sanityClient from "./client.mjs";
 
 const query = `*[_type == "blog"]{
   title,
+  type,
   text,
   publication_time,
   image,
@@ -9,5 +10,12 @@ const query = `*[_type == "blog"]{
   description
 }`;
 sanityClient.fetch(query)
-  .then((data) => { console.log(data) })
-  .catch((err) => []);
+  .then((data) => {
+    // Add an id to each item in the data array
+    const dataWithIds = data.map((item, index) => ({
+      ...item,
+      id: index + 1, // Start id from 1
+    }));
+    console.log(dataWithIds); // Now each item has an id
+  })
+  .catch((err) => console.error(err));

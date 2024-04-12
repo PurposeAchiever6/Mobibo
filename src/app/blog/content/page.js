@@ -33,7 +33,7 @@ const page =({searchParams})=> {
   const router = useRouter();
  console.log("searchParams",searchParams)
   
- const heading = searchParams.heading;
+ const title = searchParams.title;
  const Description = searchParams.description;
 
       return (
@@ -42,7 +42,7 @@ const page =({searchParams})=> {
           <LeftOutlined/> Blog
          </div>
          <div className="my-[40px] ">
-          <h2 className="font-[500] lg:text-[28px] text-[18px] lg:leading-[32px] tracking-[-0.8px] font-inter lg:w-[60%] m-auto w-[100%] lg:px-[0px] px-4">{heading}</h2>
+          <h2 className="font-[500] lg:text-[28px] text-[18px] lg:leading-[32px] tracking-[-0.8px] font-inter lg:w-[60%] m-auto w-[100%] lg:px-[0px] px-4">{title}</h2>
           <p className="font-inter font-[400] text-[12px] leading-[16px] text-[#b6b6b9] lg:w-[60%] m-auto w-[100%] lg:px-[0px] px-4">{Description}</p>
           <div>
           <Swiper
