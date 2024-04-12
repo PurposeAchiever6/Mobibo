@@ -10,9 +10,9 @@ const page = () => {
   const router = useRouter();
   const [tab, setTab] = useState("led-billboards");
   const [blogData, setBlogData] = useState([])
-  
-  useEffect(()=>{
-    async function init(){
+
+  useEffect(() => {
+    async function init() {
       const blog = await getBlog(tab);
       setBlogData(blog)
     }
@@ -21,10 +21,8 @@ const page = () => {
 
 
   function handleDetails(item) {
-    const imageSrc = encodeURIComponent(item.image.src);
-    const title = encodeURIComponent(item.title);
-    const description = encodeURIComponent(item.description);
-    return `/blog/content?title=${title}&image=${imageSrc}&description=${description}`;
+    const id = encodeURIComponent(item.id);
+    return `/blog/content?id=${id}`;
   }
 
 
@@ -49,9 +47,7 @@ const page = () => {
       </div>
       <div className="flex lg:flex-row flex-col flex-wrap gap-[10px] w-[100%] p-4 m-auto w-[100%] max-w-[1280px]">
         {blogData.map((item, index) => (
-          <div
-            className="lg:w-[24%] w-[100%] m-auto cursor-pointer"
-          >
+          <div className="flex justify-center items-center w-full lg:w-1/4 mx-auto cursor-pointer">
             <Link href={handleDetails(item)}>
               <CityCard
                 title={item.title}

@@ -47,7 +47,7 @@ const Header = () => {
                   Home
                 </Link>
 
-                <div className="border-tabs-mobile"></div>
+                {/* <div className="border-tabs-mobile"></div>
                 <Link
                   href="/city"
                   onClick={() => setIsOpen(false)}
@@ -58,7 +58,7 @@ const Header = () => {
                   }
                 >
                   City
-                </Link>
+                </Link> */}
                 <div className="border-tabs-mobile"></div>
                 <Link
                   href="/blog"
@@ -130,7 +130,7 @@ const Header = () => {
             >
               Home
             </Link>
-            <div className="border-tabs"></div>
+            {/* <div className="border-tabs"></div>
             <Link
               href="/city"
               className={
@@ -140,7 +140,7 @@ const Header = () => {
               }
             >
               City
-            </Link>
+            </Link> */}
             <div className="border-tabs"></div>
             <Link
               href="/blog"

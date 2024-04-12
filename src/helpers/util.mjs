@@ -12,7 +12,7 @@ export const getBlog = async (tab) => {
   }`;
 
   async function filterDataByType(data, tab) {
-    return data.filter(item => item.type.includes(tab));
+    return tab === '' ? data : data.filter(item => item.type.includes(tab));
   }
 
   let dataWithIds = [{
@@ -23,7 +23,7 @@ export const getBlog = async (tab) => {
     publication_time: '2024-04-02',
     image: { _type: 'image', asset: [Object] },
     caption: 'Caption',
-    id: 2
+    id: 1
   }
   ]
   const data = await sanityClient.fetch(query);
