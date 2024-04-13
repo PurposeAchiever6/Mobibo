@@ -58,6 +58,7 @@ const Personalinfo = ({ onNextClick, onPreviousClick }) => {
           onChange={handleDateChange}
           value={selectedRange}
           selectRange
+          formatDay={(locale, date) => "ABDC"}
           formatShortWeekday={(locale, date) => ""}
         />
         <div className="flex justify-between bg-[#f9ff8a] px-3 py-2">

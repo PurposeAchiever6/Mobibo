@@ -51,7 +51,7 @@ const convertBytesToMB = (bytes) => {
 
   return (
     <>
-      <div className="text-center">Upload your creatives</div>
+      <div className="text-center">Contact Information</div>
       <div className="bg-[#e4e4e4] lg:my-[40px] my-[20px]">
         <ModalTruckShow/>
         </div>

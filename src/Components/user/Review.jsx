@@ -124,7 +124,7 @@ const Review = ({onPreviousClick}) => {
     };
     return (
       <>
-          <div className="text-center">Upload Your Creatives</div>
+          <div className="text-center">Contact Information</div>
 
          <div className="lg:w-[40.33%] w-[100%] m-auto bg-[#fff] p-4 rounded-lg my-[50px]">
             <form>
