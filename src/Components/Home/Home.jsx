@@ -40,6 +40,7 @@ import { Modal } from "antd";
 import ThreeScene from "../ThreeScene/ThreeScene";
 import CityIcon from "@/Assests/CitiesIcon.svg";
 import { Select } from "antd";
+import Swal from 'sweetalert2'
 
 dotenv.config();
 
@@ -65,6 +66,51 @@ const Presentation = () => {
   const [totalDays, setTotalDays] = useState(null);
   const [totalSaving, setTotalSaving] = useState(null);
   const [isHovered, setIsHovered] = useState(false); // State to manage hover status
+
+  async function submitEmailJS() {
+    var templateParams = await orderJson(
+      location,
+      selectedRange,
+      firstName,
+      lastName,
+      email,
+      phone,
+      company,
+      driverNotes
+    );
+    axios.post(
+      "/api/order",
+      await orderJson(
+        location,
+        selectedRange,
+        firstName,
+        lastName,
+        email,
+        phone,
+        company,
+        driverNotes
+      )
+    );
+  }
+  async function submitEmailJSLocation() {
+    console.log(formData)
+    console.log("process.env.NEXT_PUBLIC_SERVICE_ID: ", process.env.NEXT_PUBLIC_SERVICE_ID)
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_LOCATION,
+        formData,
+        process.env.NEXT_PUBLIC_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          console.log("Email sending SUCCESS!");
+        },
+        (error) => {
+          console.log("Email sending FAILED...", error);
+        }
+      );
+  }
 
   const [formData, setFormData] = useState({
     location: "",
@@ -106,11 +152,24 @@ const Presentation = () => {
     const newErrors = {};
 
     if (!formData.location.trim()) {
-      newErrors.location = "Please enter the location";
+      newErrors.location = "request your location";
     }
     if (Object.keys(newErrors).length === 0) {
       console.log("No validation errors, calling onNextClick");
-      showModal();
+      submitEmailJSLocation();
+      Swal.fire({
+        title: 'Location Submitted!',
+        text: 'Your location has been Submitted!',
+        icon: 'success',
+        showCancelButton: false, 
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK',
+        allowOutsideClick: false,
+        }).then((result) => {
+        if (result.isConfirmed) {
+          
+        }
+      });
     } else {
       console.log("Validation errors found, not calling onNextClick");
       setErrors(newErrors);
@@ -527,7 +586,7 @@ const Presentation = () => {
             </div>
             <div className="bg-[#fff] lg:w-[20%] w-[80%] m-auto rounded-lg ">
               <div className="font-inter font-[500] text-[18px] leading-[28px] tracking-[-0.55px] p-3">
-                Calculate the cost of rent
+                Calculate the Cost of Rent
               </div>
               <Calendar
                 className="text-center p-3"
@@ -949,12 +1008,42 @@ const Presentation = () => {
               Provide personal information
             </div>
             <div className="font-inter font-[400] text-[12px] leading-[16px] tracking-[0.05px] text-[#3C3C4399] text-right">
-              <p>First Name</p>
-              <p>Last name</p>
-              <p>Email</p>
-              <p>Phone</p>
-              <p>Company name</p>
-              <p>Notes to LED truck driver</p>
+              <input
+                type="text"
+                placeholder="First Name"
+                onChange={e => setFirstName(e.target.value)}
+                className="text-right"
+              /><br />
+              <input
+                type="text"
+                placeholder="Last name"
+                onChange={e => setLastName(e.target.value)}
+                className="text-right"
+              /><br />
+              <input
+                type="text"
+                placeholder="Email"
+                onChange={e => setEmail(e.target.value)}
+                className="text-right"
+              /><br />
+              <input
+                type="text"
+                placeholder="Phone"
+                onChange={e => setPhone(e.target.value)}
+                className="text-right"
+              /><br />
+              <input
+                type="text"
+                placeholder="Company name"
+                onChange={e => setCompany(e.target.value)}
+                className="text-right"
+              /><br />
+              <input
+                type="text"
+                placeholder="Notes to LED truck driver"
+                onChange={e => setDriverNotes(e.target.value)}
+                className="text-right"
+              /><br />
             </div>
             <div className="font-inter font-[400] text-[16px] leading-[20px] tracking-[-0.5px]">
               Creatives

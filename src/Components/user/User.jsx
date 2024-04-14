@@ -15,7 +15,7 @@ import "./invoice.module.css";
 
 import { Checkbox, Divider, Select } from "antd";
 
-const User = ({ onNextClick }) => {
+const User = ({ onNextClick, location , setLocation }) => {
   const RoutesTravel = [
     "New York",
     "Los Angeles",
@@ -82,30 +82,27 @@ const User = ({ onNextClick }) => {
     option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0;
 
 
-  const [selectedCity, setSelectedCity] = useState("Lahore");
-  const [selectedCountry, setSelectedCountry] = useState("Pakistan");
+ 
 
   const { Option } = Select;
 
-  const handleCityChange = (value) => {
-    setSelectedCity(value);
-  };
+  // const handleCityChange = (value) => {
+  //   setSelectedCity(value);
+  // };
 
-  const handleCountryChange = (value) => {
-    setSelectedCountry(value);
-  };
+  // const handleCountryChange = (value) => {
+  //   setSelectedCountry(value);
+  // };
 
-  const [formData, setFormData] = useState({
-    mobile: "",
-  });
+ 
 
   const [errors, setErrors] = useState({});
 
   const handleInputChange = (value) => {
-    const name = "mobile";
+    const name = "location";
 
-    setFormData({
-      ...formData,
+    setLocation({
+      ...location,
       [name]: value,
     });
 
@@ -131,46 +128,46 @@ const User = ({ onNextClick }) => {
       }
     }
   };
-  console.log("formData", formData)
+  console.log("location", location)
   const handleSubmit = () => {
     const newErrors = {};
 
-    // if (!formData.firstName.trim()) {
+    // if (!location.firstName.trim()) {
     //   newErrors.firstName = "First name is required";
 
     // }
 
-    // if (!formData.lastName.trim()) {
+    // if (!location.lastName.trim()) {
     //   newErrors.lastName = "Last name is required";
     // }
 
-    // if (!formData.password.trim()) {
+    // if (!location.password.trim()) {
     //   newErrors.password = "Password is required";
     // }
 
-    // if (formData.password !== formData.verifyPassword) {
+    // if (location.password !== location.verifyPassword) {
     //   newErrors.verifyPassword = "Passwords do not match";
     // }
 
-    // if (!formData.email.trim()) {
+    // if (!location.email.trim()) {
     //   newErrors.email = "Email is required";
-    // } else if (!isValidEmail(formData.email)) {
+    // } else if (!isValidEmail(location.email)) {
     //   newErrors.email = "Invalid email format";
     // }
 
-    if (!formData.mobile.trim()) {
-      newErrors.mobile = "City is needed.";
+    if (!location.location.trim()) {
+      newErrors.location = "City is needed.";
     }
-    // if (!formData.address.trim()) {
+    // if (!location.address.trim()) {
     //   newErrors.address = "Address is required";
     // }
-    // if (!formData.city.trim()) {
+    // if (!location.city.trim()) {
     //   newErrors.city = "Please enter the city";
     // }
     // if (!selectedCountry) {
     //   newErrors.country = "Country is required"; // Set the error message for the country
     // }
-    // if (!formData.postCode.trim()) {
+    // if (!location.postCode.trim()) {
     //   newErrors.postCode = "Please enter the postcode";
     // }
 
@@ -210,8 +207,8 @@ const User = ({ onNextClick }) => {
                   ))}
                 </Select>
 
-                {errors.mobile && (
-                  <p className="text-sm text-[red] mt-1">{errors.mobile}</p>
+                {errors.location && (
+                  <p className="text-sm text-[red] mt-1">{errors.location}</p>
                 )}
               </div>
             </div>
@@ -221,7 +218,7 @@ const User = ({ onNextClick }) => {
 
       <div className="flex justify-center p-4  w-full text-center next-btn  mt-5 m-auto">
         <div>
-          <button className={formData.mobile.trim() ? "rounded-md bg-[#80FFAB] px-3 py-2 text-base font-semibold text-[#000] shadow-sm hover:text-indigo-500 ml-auto mt-[10px]" : "rounded-md bg-[#f7f7f7] px-3 py-2 text-sm font-semibold text-[#d5d5d7] shadow-sm cursor-not-allowed ml-auto mt-[10px]"} onClick={handleSubmit}>
+          <button className={location.location.trim() ? "rounded-md bg-[#80FFAB] px-3 py-2 text-base font-semibold text-[#000] shadow-sm hover:text-indigo-500 ml-auto mt-[10px]" : "rounded-md bg-[#f7f7f7] px-3 py-2 text-sm font-semibold text-[#d5d5d7] shadow-sm cursor-not-allowed ml-auto mt-[10px]"} onClick={handleSubmit}>
             Next <ArrowRightOutlined className="pt-[3px] pl-2" />
           </button>
           <br /><br />

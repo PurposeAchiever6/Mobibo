@@ -13,11 +13,10 @@ import Image from "next/image";
 
 import { Checkbox, Divider, Select } from "antd";
 
-const Lock = ({ onNextClick, onPreviousClick }) => {
+const Lock = ({ onNextClick, onPreviousClick, selectedImageModalSide, setSelectedImageModalSide, selectedImageModalBack, setSelectedImageModalBack }) => {
   const [truckModalSide ,setTruckModalSide] = useState("side");
   const [viewModalType ,setViewModalType] = useState("2d");
-  const [selectedImageModalSide, setSelectedImageModalSide] = useState(null);
-  const [selectedImageModalBack, setSelectedImageModalBack] = useState(null);
+  
   const [fileSpecsModalSide , setFileSpecsModalSide] = useState();
   const [fileSpecsModalBack , setFileSpecsModalBack] = useState();
   const [fileTypeModalSide , setFileTypeModalSide] = useState();

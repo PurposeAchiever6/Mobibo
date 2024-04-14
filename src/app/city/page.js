@@ -98,7 +98,7 @@ const page = () => {
     const newErrors = {};
 
     if (!formData.location.trim()) {
-      newErrors.location = "Please enter the location";
+      newErrors.location = "request your location";
     }
     if (Object.keys(newErrors).length === 0) {
       console.log("No validation errors, calling onNextClick");
@@ -216,7 +216,7 @@ const page = () => {
       companyImage: companyImage7,
     },
   ];
-  
+
   const handleClickDay = (date) => {
     setTotalDays(1)
     setTotalCost(1 * 1750);
@@ -276,7 +276,7 @@ const page = () => {
             </div>
             <div className="bg-[#fff] lg:w-[20%] w-[80%] m-auto rounded-lg ">
               <div className="font-inter font-[500] text-[18px] leading-[28px] tracking-[-0.55px] p-3">
-                Calculate the cost of rent
+                Calculate the Cost of Rent
               </div>
               <Calendar
                 className="text-center p-3"

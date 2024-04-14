@@ -12,9 +12,75 @@ import Personalinfo from "./Personalinfo";
 import Lock from "./Lock";
 import Review from "./Review";
 import "./invoice.module.css";
+import { orderJson } from "@/app/api/utils/json.mjs";
+import axios from "axios";
+import emailjs from "@emailjs/browser";
 
 const Invoice = () => {
+
   const [activeTab, setActiveTab] = useState(1);
+  // 1
+  const [location, setLocation] = useState({
+    location: "",
+  });
+  // 2
+  const [selectedRange, setSelectedRange] = useState([]);
+  // 3
+  const [selectedImageModalSide, setSelectedImageModalSide] = useState(null);
+  const [selectedImageModalBack, setSelectedImageModalBack] = useState(null);
+  // 4
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    company: "",
+    driverNotes: "",
+  });
+
+  async function submitEmailJS() {
+    var templateParams = await orderJson(
+      location.location,
+      selectedRange,
+      formData.firstName,
+      formData.lastName,
+      formData.email,
+      formData.phone,
+      formData.company,
+      formData.driverNotes
+    );
+    axios.post(
+      "/api/order",
+      await orderJson(
+        location.location,
+        selectedRange,
+        formData.firstName,
+        formData.lastName,
+        formData.email,
+        formData.phone,
+        formData.company,
+        formData.driverNotes
+      )
+    );
+    console.log(process.env.NEXT_PUBLIC_SERVICE_ID);
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID,
+        templateParams,
+        process.env.NEXT_PUBLIC_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          console.log("Email sending SUCCESS!");
+        },
+        (error) => {
+          console.log("Email sending FAILED...", error);
+        }
+      );
+  }
+
+
 
   const handleNextClick = () => {
     // Logic to navigate to the next tab
@@ -35,43 +101,44 @@ const Invoice = () => {
           <div className="flex justify-center text-center lg:gap-6 gap-4 py-4 cursor-pointer items-end ">
             <div
               className={`tab ${activeTab === 1 ? "bg-[#A57BFF] px-4 py-2 rounded-full font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px] text-[#fff]" : "bg-[#f2f2f7] px-4 py-2 rounded-full font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px] text-[#3C3C43]"}`}
-              // onClick={() => handleTabClick(1)}
+            // onClick={() => handleTabClick(1)}
             >
               <div>1</div>
             </div>
-                       
-              
-            
+
+
+
 
             <div
               className={`tab ${activeTab === 2 ? "bg-[#A57BFF] px-4 py-2 rounded-full font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px] text-[#fff]" : "bg-[#f2f2f7] px-4 py-2 rounded-full font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px] text-[#3C3C43]"}`}
-              // onClick={() => handleTabClick(2)}
+            // onClick={() => handleTabClick(2)}
             >
               <div>2</div>
             </div>
-              
-              
-          
+
+
+
             <div
               className={`tab ${activeTab === 3 ? "bg-[#A57BFF] px-4 py-2 rounded-full font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px] text-[#fff]" : "bg-[#f2f2f7] px-4 py-2 rounded-full font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px] text-[#3C3C43]"}`}
-              // onClick={() => handleTabClick(3)}
+            // onClick={() => handleTabClick(3)}
             >
               <div>3</div>
             </div>
-          
-              
+
+
             <div
               className={`tab ${activeTab === 4 ? "bg-[#A57BFF] px-4 py-2 rounded-full font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px] text-[#fff]" : "bg-[#f2f2f7] px-4 py-2 rounded-full font-inter font-[500] text-[20px] leading-[24px] tracking-[-0.55px] text-[#3C3C43]"}`}
-              // onClick={() => handleTabClick(4)}
+            // onClick={() => handleTabClick(4)}
             >
               <div>4</div>
             </div>
           </div>
           <div className="tab-content">
-            {activeTab === 1 && <User onNextClick={handleNextClick}/>}
-            {activeTab === 2 && <Personalinfo onNextClick={handleNextClick} onPreviousClick={handlePreviousClick}/>}
-            {activeTab === 3 && <Lock onNextClick={handleNextClick} onPreviousClick={handlePreviousClick}/>}
-            {activeTab === 4 && <Review onPreviousClick={handlePreviousClick}/>}
+            {activeTab === 1 && <User onNextClick={handleNextClick} setLocation={setLocation} location={location} />}
+            {activeTab === 2 && <Personalinfo onNextClick={handleNextClick} setSelectedRange={setSelectedRange} selectedRange={selectedRange} />}
+            {/* {activeTab === 3 && <Lock onNextClick={handleNextClick} onPreviousClick={handlePreviousClick}/>} */}
+            {activeTab === 3 && <Lock onNextClick={handleNextClick} selectedImageModalSide={selectedImageModalSide} setSelectedImageModalSide={setSelectedImageModalSide} selectedImageModalBack={selectedImageModalBack} setSelectedImageModalBack={setSelectedImageModalBack} />}
+            {activeTab === 4 && <Review onPreviousClick={handlePreviousClick} setFormData={setFormData} formData={formData} submitEmailJS={submitEmailJS} />}
           </div>
         </div>
       </div>
@@ -93,72 +160,72 @@ export default Invoice;
 //   );
 // };
 
-  // const handleNextClick = () => {
-  //   const currentImage = images[currentIndex];
-  //   if (currentImage.validate) {
-  //     const validationError = currentImage.validate();
-  //     if (validationError) {
-  //       setValidationErrors({ [currentIndex]: validationError });
-  //       return;
-  //     }
-  //   }
+// const handleNextClick = () => {
+//   const currentImage = images[currentIndex];
+//   if (currentImage.validate) {
+//     const validationError = currentImage.validate();
+//     if (validationError) {
+//       setValidationErrors({ [currentIndex]: validationError });
+//       return;
+//     }
+//   }
 
-  //   if (currentIndex === images.length - 1) {
-  //     console.log("Submit button clicked"); // Handle the Submit action here
-  //   } else {
-  //     setCurrentIndex((prevIndex) => prevIndex + 1);
-  //   }
-  // };
-  // const images = [
-  //   {
-  //     icon: <UserOutlined className="text-3xl" />,
-  //     lable: "Account Details",
-  //     slider: <User />,
-  //     // validate: validateUser,
-  //   },
-  //   {
-  //     icon: <ClockCircleOutlined className="text-3xl" />,
-  //     lable: "Personal Info",
-  //     slider: <Personalinfo />,
-  //   },
-  //   {
-  //     icon: <LockOutlined className="text-3xl" />,
-  //     lable: "Roles & Stores",
-  //     slider: <Lock />,
-  //   },
-  //   {
-  //     icon: <CheckCircleOutlined className="text-3xl" />,
-  //     lable: "Review & Submit",
-  //     slider: <Review />,
-  //   },
-  // ];
+//   if (currentIndex === images.length - 1) {
+//     console.log("Submit button clicked"); // Handle the Submit action here
+//   } else {
+//     setCurrentIndex((prevIndex) => prevIndex + 1);
+//   }
+// };
+// const images = [
+//   {
+//     icon: <UserOutlined className="text-3xl" />,
+//     lable: "Account Details",
+//     slider: <User />,
+//     // validate: validateUser,
+//   },
+//   {
+//     icon: <ClockCircleOutlined className="text-3xl" />,
+//     lable: "Personal Info",
+//     slider: <Personalinfo />,
+//   },
+//   {
+//     icon: <LockOutlined className="text-3xl" />,
+//     lable: "Roles & Stores",
+//     slider: <Lock />,
+//   },
+//   {
+//     icon: <CheckCircleOutlined className="text-3xl" />,
+//     lable: "Review & Submit",
+//     slider: <Review />,
+//   },
+// ];
 
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  // const [validationErrors, setValidationErrors] = useState({});
+// const [currentIndex, setCurrentIndex] = useState(0);
+// const [validationErrors, setValidationErrors] = useState({});
 
-  // const handleButtonClick = (index) => {
-  //   setCurrentIndex(index);
-  // };
-  // const userRef = useRef(null);
+// const handleButtonClick = (index) => {
+//   setCurrentIndex(index);
+// };
+// const userRef = useRef(null);
 
-  // const handleNextClick = () => {
-  //   if (currentIndex === images.length - 1) {
-  //     console.log("Submit button clicked");
-  //   } else {
-  //     if (currentIndex === 0) {
-  //       // If the current step is the "User" step, validate the User component.
-  //       const userValidationError = userRef.current.validateUser();
-  //       if (userValidationError) {
-  //         setValidationErrors({ [currentIndex]: userValidationError });
-  //         return;
-  //       }
-  //     }
-  //     // Handle navigation to the next step here.
-  //     setCurrentIndex((prevIndex) => prevIndex + 1);
-  //   }
-  // };
+// const handleNextClick = () => {
+//   if (currentIndex === images.length - 1) {
+//     console.log("Submit button clicked");
+//   } else {
+//     if (currentIndex === 0) {
+//       // If the current step is the "User" step, validate the User component.
+//       const userValidationError = userRef.current.validateUser();
+//       if (userValidationError) {
+//         setValidationErrors({ [currentIndex]: userValidationError });
+//         return;
+//       }
+//     }
+//     // Handle navigation to the next step here.
+//     setCurrentIndex((prevIndex) => prevIndex + 1);
+//   }
+// };
 
-        {/* {images.map((item, index) => (
+{/* {images.map((item, index) => (
           <div key={index} className="icons-slider text-center">
             <button
               className={`p-2 rounded-lg ${
@@ -185,7 +252,7 @@ export default Invoice;
             {validationErrors[currentIndex]}
           </div>
         )} */}
-      {/* <div className="flex justify-between px-4 pb-4 w-full text-right next-btn">
+{/* <div className="flex justify-between px-4 pb-4 w-full text-right next-btn">
         {currentIndex > 0 && (
           <button
             onClick={handlePreviousClick}

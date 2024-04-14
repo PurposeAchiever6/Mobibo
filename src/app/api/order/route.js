@@ -2,11 +2,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Database from '../db/mongodb.mjs';
 
-
-async function createOrderRecord(firstName, lastName, email, phone, company, driverNotes, imageUrl = '') {
+async function createOrderRecord(location, selectedRange, firstName, lastName, email, phone, company, driverNotes) {
   const database = new Database(process.env.MONGODB_URI);
   await database.connect();
   await database.create("order", {
+    location: location,
+    selectedRange: selectedRange,
     firstName: firstName,
     lastName: lastName,
     email: email,
@@ -20,8 +21,22 @@ async function createOrderRecord(firstName, lastName, email, phone, company, dri
 export async function POST(req) {
   const data = await req.json();
   console.log(data);
-  const { firstName, lastName, email, phone, company, driverNotes, imageUrl } = data;
+  const { location,
+    selectedRange,
+    firstName,
+    lastName,
+    email,
+    phone,
+    company,
+    driverNotes } = data;
   console.log(firstName);
-  await createOrderRecord(firstName, lastName, email, phone, company, driverNotes);
+  await createOrderRecord(location,
+    selectedRange,
+    firstName,
+    lastName,
+    email,
+    phone,
+    company,
+    driverNotes);
   return NextResponse.json(data);
 }

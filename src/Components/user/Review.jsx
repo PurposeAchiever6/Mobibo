@@ -18,16 +18,9 @@ import "./invoice.module.css";
 import { Checkbox, Divider, Select } from "antd";
 import { useRouter } from 'next/navigation';
 
-const Review = ({onPreviousClick}) => {
+const Review = ({onPreviousClick, setFormData, formData, submitEmailJS}) => {
   const router = useRouter(); 
-    const [formData, setFormData] = useState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      mobile: "",
-      address: "",
-      notes:"",
-    });
+    
   
     const [errors, setErrors] = useState({});
     const handleInputChange = (e) => {
@@ -79,18 +72,19 @@ const Review = ({onPreviousClick}) => {
         newErrors.email = "Invalid email format";
       }
   
-      if (!formData.mobile.trim()) {
-        newErrors.mobile = "Phone Number is required";
+      if (!formData.phone.trim()) {
+        newErrors.phone = "Phone Number is required";
       }
-      if (!formData.address.trim()) {
-        newErrors.address = "Please Give your Company name ";
+      if (!formData.company.trim()) {
+        newErrors.company = "Please Give your Company name ";
       }
-      if (!formData.notes.trim()) {
-        newErrors.notes = "Please enter the Driver Notes";
+      if (!formData.driverNotes.trim()) {
+        newErrors.driverNotes = "Please enter the Driver Notes";
       }
       
       if (Object.keys(newErrors).length === 0) {
         console.log("No validation errors, calling onNextClick");
+        submitEmailJS()
         // Swal.fire({
         //   title: 'Form Submitted!',
         //   text: 'Your form has been Submitted!',
@@ -181,15 +175,15 @@ const Review = ({onPreviousClick}) => {
                   Phone
                 </label>
                 <input
-                  type="number"
-                  name="mobile"
-                  id="mobile"
+                  type="text"
+                  name="phone"
+                  id="phone"
                   placeholder="Enter Phone Number"
                   onChange={handleInputChange} // Corrected onChange handler
                   className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"
                 />
-                {errors.mobile && (
-                  <p className="text-sm text-[red] mt-1">{errors.mobile}</p>
+                {errors.phone && (
+                  <p className="text-sm text-[red] mt-1">{errors.phone}</p>
                 )}
               </div>
               <div className="flex flex-col gap-[10px] mb-[10px]">
@@ -198,14 +192,14 @@ const Review = ({onPreviousClick}) => {
                 </label>
                 <input
                   type="text"
-                  name="address"
-                  id="address"
+                  name="company"
+                  id="company"
                   placeholder="Your Company Name"
                   onChange={handleInputChange} // Corrected onChange handler
                   className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"
                 />
-                {errors.address && (
-                  <p className="text-sm text-[red] mt-1">{errors.address}</p>
+                {errors.company && (
+                  <p className="text-sm text-[red] mt-1">{errors.company}</p>
                 )}
               </div>
               <div className="flex flex-col gap-[10px] mb-[10px]">
@@ -214,14 +208,14 @@ const Review = ({onPreviousClick}) => {
                 </label>
                 <input
                   type="text"
-                  name="notes"
-                  id="notes"
+                  name="driverNotes"
+                  id="driverNotes"
                   placeholder="Enter Driver Notes"
                   onChange={handleInputChange} // Corrected onChange handler
                   className="bg-[#f8f8f8] text-[#8e8e91] rounded-lg placeholder:text-[#8e8e91] px-4 py-2 focus:outline-none border-[1px] border-[#e5e5ea]"
                 />
-                {errors.notes && (
-                  <p className="text-sm text-[red] mt-1">{errors.notes}</p>
+                {errors.driverNotes && (
+                  <p className="text-sm text-[red] mt-1">{errors.driverNotes}</p>
                 )}
               </div>
             </form>
