@@ -1,6 +1,6 @@
 'use client'
 import { LeftOutlined } from '@ant-design/icons'
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Image from 'next/image';
 import companyImage1 from "@/Assests/companyImage13.png";
 import companyImage2 from "@/Assests/companyImage2.jpeg";
@@ -46,11 +46,11 @@ const BlogContent = ({ id }) => {
 
   useEffect(() => {
     async function init() {
-      
+
       const blog = await getBlog('');
-    
-    
-    
+
+
+
       setTitle(blog[id - 1].title);
       setPublicationTime(blog[id - 1].publication_time);
       const image_ = blog[id - 1].image.asset;
@@ -83,22 +83,25 @@ const BlogContent = ({ id }) => {
             slidesPerView={1}
           >
             <SwiperSlide>
-              <div className="flex  justify-between w-[100%]">
-                <img src={imageUrl} />
+              <div className="flex justify-center w-[100%]"> {/* Updated this line */}
+                <img src={imageUrl} alt="Doesn't have image." />
               </div>
             </SwiperSlide>
           </Swiper>
         </div>
         <div className="lg:w-[60%] w-[100%] px-4 lg:px-[0px] m-auto flex flex-col gap-[10px] lg:text-[16px] text-[14px] font-inter font-[400] leading-[20px] tracking-[-0.5px]">
-          {text}
+          {text.split('\n').map((paragraph, index) => (
+            paragraph ? <p key={index}>{paragraph}</p> : null
+          ))}
           <div className="flex justify-between items-center py-4" style={{ borderTop: "1px solid #b6b6b9" }}>
             <div className='text-[#b6b6b9] font-inter text-[12px] font-[400] leading-[16px] tracking-[0.05px]'>
               Share this article
             </div>
             <div className="flex gap-[10px] items-center">
-              <Image src={facebook} />
-              <Image src={linkedin} />
-              <Image src={twitter} />
+              {/* Assuming you have the image paths set correctly for Image src */}
+              <Image src={facebook} alt="Facebook" />
+              <Image src={linkedin} alt="LinkedIn" />
+              <Image src={twitter} alt="Twitter" />
             </div>
           </div>
         </div>
