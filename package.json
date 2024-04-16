@@ -12,6 +12,7 @@
     "@ant-design/icons": "^5.3.5",
     "@aws-sdk/client-s3": "^3.540.0",
     "@emailjs/browser": "^4.3.3",
+    "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^6.15.13",
     "@sanity/image-url": "^1.0.2",
     "antd": "^5.16.0",

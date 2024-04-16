@@ -632,3 +632,63 @@ html {
     text-align: unset !important;
   }
 }
+
+/* Normal text style */
+.normal {
+  font-size: 14px;
+  margin-bottom: 1em;
+  padding: 8px;
+}
+
+/* Heading 1 */
+h1, .h1 {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+/* Heading 2 */
+h2, .h2 {
+  display: block;
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+/* Heading 3 */
+h3, .h3 {
+  display: block;
+  font-size: 1em;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+/* Heading 4 */
+h4, .h4 {
+  display: block;
+  font-size: .83em;
+  margin-top: 1.67em;
+  margin-bottom: 1.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+/* Quote */
+blockquote, .blockquote {
+  font-style: italic;
+  border-left: 4px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 20px; /* Increased padding for emphasis */
+  background-color: #f9f9f9; /* Maintains a light background for contrast */
+}

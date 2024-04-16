@@ -4,7 +4,7 @@ export const getBlog = async (tab) => {
   const query = `*[_type == "blog"]{
     title,
     type,
-    text,
+    blockContent,
     publication_time,
     image,
     caption,
@@ -19,7 +19,7 @@ export const getBlog = async (tab) => {
     description: 'Description',
     title: 'Title',
     type: ['drone-advertising', ''],
-    text: 'Text',
+    blockContent: 'blockContent',
     publication_time: '2024-04-02',
     image: { _type: 'image', asset: [Object] },
     caption: 'Caption',

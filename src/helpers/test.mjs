@@ -3,7 +3,7 @@ import sanityClient from "./client.mjs";
 const query = `*[_type == "blog"]{
   title,
   type,
-  text,
+  blockContent,
   publication_time,
   image,
   caption,

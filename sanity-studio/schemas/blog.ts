@@ -29,10 +29,56 @@ export default defineType({
       }],
       validation: Rule => Rule.required('You must select at least one type.').min(1, 'You must select at least one type.'),
     }),
+    // defineField({
+    //   name: 'text',
+    //   title: 'Text',
+    //   type: 'text',
+    // }),
     defineField({
-      name: 'text',
-      title: 'Text',
-      type: 'text',
+      name: 'blockContent',
+      title: 'Block Content',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'H1', value: 'h1' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'H4', value: 'h4' },
+            { title: 'Quote', value: 'blockquote' },
+          ],
+          marks: {
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+            ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  {
+                    name: 'url',
+                    type: 'url',
+                    title: 'URL',
+                  },
+                  {
+                    name: 'openInNewTab',
+                    type: 'boolean',
+                    title: 'Open in new tab',
+                  },
+                ],
+              },
+            ],
+          },
+          lists: [
+            { title: 'Bullet', value: 'bullet' },
+          ],
+        },
+      ],
     }),
     defineField({
       name: 'author',
